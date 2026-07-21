@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Construtor de Sistemas · Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint:#0B2A4A;      /* azul planta técnica profundo */
+    --blueprint-2:#0E3358;
+    --ink:#0A1929;
+    --paper:#EDF1F5;          /* branco-azulado frio */
+    --line:#2B5580;           /* linhas do grid */
+    --line-soft:#1B4270;
+    --spark:#FF6B35;          /* laranja elétrico = IA acelerando */
+    --spark-2:#FFB627;        /* âmbar secundário */
+    --cyan:#4DD0E1;           /* ciano técnico, dado/medida */
+    --white:#FFFFFF;
+    --mute:#7C93AB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Space Grotesk',sans-serif;
+    background:var(--blueprint);
+    color:var(--paper);
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* grid de planta técnica de fundo */
+  .blueprint-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:44px 44px;
+    opacity:0.20;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 40%,transparent 100%);
+  }
+  .content{position:relative;z-index:1}
+
+  /* eyebrow técnico */
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--spark);font-weight:500;
+    display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--spark)}
+
+  section{padding:clamp(4rem,9vw,8rem) clamp(1.4rem,6vw,7rem);position:relative}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .hero-tag{margin-bottom:2rem;opacity:0;animation:fadeUp .7s .1s forwards}
+  .hero h1{
+    font-size:clamp(2.4rem,7vw,5.8rem);font-weight:700;line-height:1.02;
+    letter-spacing:-.02em;max-width:16ch;
+  }
+  .hero h1 .l{display:block;opacity:0;transform:translateY(24px);animation:fadeUp .8s forwards}
+  .hero h1 .l:nth-child(1){animation-delay:.25s}
+  .hero h1 .l:nth-child(2){animation-delay:.4s}
+  .hero h1 .accent{color:var(--spark);position:relative;white-space:nowrap}
+  /* cursor de código piscando após o título */
+  .hero h1 .accent::after{
+    content:"";display:inline-block;width:.5ch;height:.9em;background:var(--spark);
+    margin-left:.15em;vertical-align:-8%;animation:blink 1.1s steps(2) infinite;
+  }
+  @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+  .hero p.sub{
+    margin-top:2rem;font-size:clamp(1.05rem,2vw,1.4rem);color:#B9CBDD;max-width:46ch;
+    opacity:0;animation:fadeUp .8s .6s forwards;
+  }
+  .hero .meta{
+    margin-top:3.5rem;display:flex;gap:2rem;flex-wrap:wrap;
+    opacity:0;animation:fadeUp .8s .8s forwards;
+  }
+  .hero .meta .m{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--mute)}
+  .hero .meta .m b{color:var(--cyan);font-weight:500}
+  .scroll-hint{
+    position:absolute;bottom:2.2rem;left:clamp(1.4rem,6vw,7rem);
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.2em;
+    color:var(--mute);text-transform:uppercase;opacity:0;animation:fadeUp 1s 1.2s forwards;
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .scroll-hint .dot{width:6px;height:6px;border-radius:50%;background:var(--spark);animation:pulse 1.6s infinite}
+
+  /* dimensão / linha de medida decorativa no hero */
+  .dim-line{position:absolute;right:clamp(1.4rem,6vw,7rem);top:0;bottom:0;width:1px;
+    background:linear-gradient(var(--line),transparent);opacity:.5;display:none}
+  @media(min-width:900px){.dim-line{display:block}}
+
+  @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.6)}}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  h2.sec{font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.02em;margin:1rem 0 1rem;max-width:20ch}
+  .lead{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#B9CBDD;max-width:56ch;margin-bottom:3rem}
+
+  /* ---------- cards de serviço (planta) ---------- */
+  .grid-svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;margin-top:1rem}
+  .card{
+    background:linear-gradient(160deg,var(--blueprint-2),var(--ink));
+    border:1px solid var(--line-soft);border-radius:4px;padding:1.8rem;position:relative;
+    transition:border-color .3s,transform .3s;overflow:hidden;
+  }
+  .card::before{ /* canto técnico */
+    content:"";position:absolute;top:10px;right:10px;width:14px;height:14px;
+    border-top:1px solid var(--spark);border-right:1px solid var(--spark);opacity:.6;
+  }
+  .card:hover{border-color:var(--spark);transform:translateY(-4px)}
+  .card .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--spark);letter-spacing:.1em}
+  .card h3{font-size:1.15rem;font-weight:600;margin:.9rem 0 .5rem}
+  .card p{font-size:.92rem;color:#9DB2C7}
+
+  /* ---------- processo (linha de montagem) ---------- */
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;margin-top:1rem}
+  .step{padding:1.8rem 1.6rem;border-left:1px solid var(--line-soft);position:relative}
+  .step:first-child{border-left:none}
+  .step .st-n{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:700;color:var(--line);line-height:1}
+  .step:hover .st-n{color:var(--spark);transition:color .3s}
+  .step h3{font-size:1.1rem;font-weight:600;margin:.7rem 0 .5rem}
+  .step p{font-size:.88rem;color:#9DB2C7}
+  .step .tick{position:absolute;top:1.9rem;right:1.4rem;width:7px;height:7px;background:var(--cyan);border-radius:50%;opacity:.5}
+
+  /* ---------- CASE band ---------- */
+  .case{background:var(--ink);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .case-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+  .case-head .tagpill{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink);background:var(--spark);padding:.28rem .7rem;border-radius:2px;font-weight:700;
+  }
+  /* stats grandes */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:2.5rem}
+  .stat{border:1px solid var(--line-soft);border-radius:4px;padding:1.8rem;background:linear-gradient(160deg,var(--blueprint-2),transparent)}
+  .stat .big{font-size:clamp(2.6rem,6vw,3.8rem);font-weight:700;color:var(--spark);letter-spacing:-.03em;line-height:1;font-family:'Space Grotesk'}
+  .stat .lbl{font-weight:600;margin-top:.5rem}
+  .stat .desc{font-size:.85rem;color:#9DB2C7;margin-top:.4rem}
+
+  /* before -> after */
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:stretch;margin-top:1rem}
+  @media(max-width:720px){.ba{grid-template-columns:1fr;gap:.8rem}.ba .arrow{transform:rotate(90deg);justify-self:center}}
+  .ba .box{border:1px solid var(--line-soft);border-radius:4px;padding:1.6rem;background:var(--blueprint-2)}
+  .ba .box.after{border-color:var(--spark)}
+  .ba .box .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mute)}
+  .ba .box.after .tag{color:var(--spark)}
+  .ba .box h4{font-size:1.05rem;font-weight:600;margin:.6rem 0 .5rem}
+  .ba .box p{font-size:.88rem;color:#9DB2C7}
+  .ba .arrow{display:flex;align-items:center;color:var(--spark);font-size:1.6rem}
+
+  /* feature list do case */
+  .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
+  .feat .f{display:flex;gap:.9rem;align-items:flex-start;padding:1.1rem;border:1px solid var(--line-soft);border-radius:4px}
+  .feat .f .fi{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:.9rem;margin-top:.1rem;flex-shrink:0}
+  .feat .f h4{font-size:1rem;font-weight:600}
+  .feat .f p{font-size:.85rem;color:#9DB2C7;margin-top:.2rem}
+
+  /* ---------- porque ---------- */
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:1rem}
+  .why .w{padding:1.6rem;border-radius:4px;background:linear-gradient(160deg,var(--blueprint-2),var(--ink));border:1px solid var(--line-soft);position:relative}
+  .why .w .chk{color:var(--spark);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.9rem}
+  .why .w h3{font-size:1.1rem;font-weight:600;margin:.6rem 0 .4rem}
+  .why .w p{font-size:.9rem;color:#9DB2C7}
+
+  /* ---------- CTA ---------- */
+  .cta{text-align:center;background:radial-gradient(ellipse 70% 100% at 50% 100%,var(--blueprint-2),var(--blueprint))}
+  .cta h2{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:700;letter-spacing:-.02em;max-width:18ch;margin:1rem auto 1.2rem}
+  .cta .accent{color:var(--spark)}
+  .cta p{color:#B9CBDD;max-width:44ch;margin:0 auto 2.5rem;font-size:1.1rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.7rem;background:var(--spark);color:var(--ink);
+    font-weight:700;font-size:1.05rem;padding:1rem 2rem;border-radius:3px;text-decoration:none;
+    font-family:'Space Grotesk';transition:transform .2s,box-shadow .2s;
+    box-shadow:0 0 0 rgba(255,107,53,0);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,107,53,.5)}
+  .btn .mono{font-size:.9rem}
+  .signature{margin-top:3rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--mute)}
+  .signature b{color:var(--paper);font-weight:500}
+
+  .placeholder{color:var(--spark-2);border-bottom:1px dashed var(--spark-2);padding-bottom:1px}
+
+  footer{padding:2.5rem clamp(1.4rem,6vw,7rem);border-top:1px solid var(--line-soft);
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--mute);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+  /* ---------- galeria de screenshots ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:1.4rem}
+  .shot{
+    position:relative;border:1px solid var(--line-soft);border-radius:5px;overflow:hidden;
+    background:var(--blueprint-2);aspect-ratio:16/10;transition:border-color .3s,transform .3s;
+  }
+  .shot:hover{border-color:var(--spark);transform:translateY(-3px)}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  /* placeholder quando não há imagem: moldura técnica com legenda */
+  .shot .ph{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:.7rem;color:var(--mute);text-align:center;padding:1rem;
+    background:
+      repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(43,85,128,.12) 12px,rgba(43,85,128,.12) 13px),
+      linear-gradient(160deg,var(--blueprint-2),var(--ink));
+  }
+  .shot .ph .ico{font-family:'JetBrains Mono',monospace;font-size:1.5rem;color:var(--line);border:1px solid var(--line-soft);width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:4px}
+  .shot .ph .cap{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.05em}
+  .shot .ph .hint{font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--spark-2);opacity:.7}
+  /* legenda sobreposta (aparece com imagem também) */
+  .shot .label{
+    position:absolute;left:0;right:0;bottom:0;padding:.7rem .9rem;
+    background:linear-gradient(transparent,rgba(10,25,41,.92));
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--paper);letter-spacing:.03em;
+    z-index:2;
+  }
+  .shot .label b{color:var(--spark)}
+
+  /* ---------- grade de portfólio (múltiplos projetos) ---------- */
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin-top:1.4rem}
+  .project{
+    border:1px solid var(--line-soft);border-radius:6px;overflow:hidden;
+    background:linear-gradient(160deg,var(--blueprint-2),var(--ink));
+    transition:border-color .3s,transform .3s;display:flex;flex-direction:column;
+  }
+  .project:hover{border-color:var(--spark);transform:translateY(-4px)}
+  .project .thumb{position:relative;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid var(--line-soft);background:var(--ink)}
+  .project .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .project .thumb .ph{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--line);
+    font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.1em;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(43,85,128,.1) 12px,rgba(43,85,128,.1) 13px);
+  }
+  .project .pbody{padding:1.4rem 1.5rem 1.6rem}
+  .project .ptag{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan)}
+  .project h3{font-size:1.25rem;font-weight:600;margin:.5rem 0 .5rem}
+  .project p{font-size:.9rem;color:#9DB2C7;margin-bottom:.9rem}
+  .project .stack{display:flex;flex-wrap:wrap;gap:.4rem}
+  .project .stack span{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--mute);border:1px solid var(--line-soft);padding:.2rem .5rem;border-radius:2px}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .hero h1 .l,.hero-tag,.hero p.sub,.hero .meta,.scroll-hint{opacity:1;transform:none}
+  }
+
+  /* ---------- lightbox (ampliar imagem) ---------- */
+  .shot img,.project .thumb img{cursor:zoom-in}
+  .shot::after{content:"\2922";position:absolute;top:10px;left:10px;z-index:3;font-size:.95rem;color:var(--paper);
+    background:rgba(10,25,41,.72);border:1px solid var(--line-soft);border-radius:4px;width:26px;height:26px;
+    display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;pointer-events:none}
+  .shot:hover::after{opacity:.92}
+  .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;
+    background:rgba(6,18,32,.93);backdrop-filter:blur(4px);padding:3vh 3vw;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:92vh;object-fit:contain;border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 24px 70px -14px rgba(0,0,0,.75)}
+  .lightbox .lb-close{position:absolute;top:1.1rem;right:1.3rem;color:var(--paper);font-family:'JetBrains Mono',monospace;
+    font-size:1.1rem;background:rgba(10,25,41,.6);border:1px solid var(--line-soft);width:42px;height:42px;border-radius:6px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+  .lightbox .lb-close:hover{border-color:var(--spark);color:var(--spark)}
+  .lightbox .lb-cap{position:absolute;bottom:1.1rem;left:0;right:0;text-align:center;padding:0 2rem;
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#B9CBDD;letter-spacing:.03em}
+  @media(prefers-reduced-motion:reduce){.shot::after{transition:none}}
+
+  .project .thumb.split{display:flex;gap:2px;background:var(--ink);height:auto;aspect-ratio:16/9}
+  .project .thumb.split img{flex:1;min-width:0;width:auto;height:100%;object-fit:cover;object-position:top left;border-right:1px solid var(--line-soft)}
+  .project .thumb.split img:last-child{border-right:none}
+</style>
+</head>
+<body>
+<div class="blueprint-grid"></div>
+<div class="content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="dim-line"></div>
+    <div class="hero-tag"><span class="eyebrow">Construtor de Sistemas &amp; Web · acelerado por IA</span></div>
+    <h1>
+      <span class="l">Eu transformo o seu</span>
+      <span class="l">processo em um <span class="accent">sistema</span></span>
+    </h1>
+    <p class="sub">Aplicações web e sistemas de gestão sob medida. Da planilha no limite ao software que a sua operação usa todo dia.</p>
+    <div class="meta">
+      <span class="m">// <b>arquitetura</b> de dados e regras</span>
+      <span class="m">// <b>IA</b> acelerando a execução</span>
+      <span class="m">// <b>entrega</b> em semanas</span>
+    </div>
+    <div class="scroll-hint"><span class="dot"></span> role para ver o trabalho</div>
+  </section>
+
+  <!-- QUEM -->
+  <section>
+    <span class="eyebrow reveal">Quem está por trás</span>
+    <h2 class="sec reveal">Não é uma software house.<br>É um construtor que entende o problema.</h2>
+    <p class="lead reveal">Eu não entrego um orçamento fechado e sumo por três meses. Eu entendo como a sua operação funciona de verdade, desenho a solução e construo o sistema funcionando — usando IA como alavanca pra fazer em semanas o que levaria muito mais.</p>
+    <div class="grid-svc">
+      <div class="card reveal"><div class="num">// 01</div><h3>Entendo o negócio</h3><p>Antes de qualquer linha de código, entendo a operação, o gargalo e o que realmente importa resolver.</p></div>
+      <div class="card reveal"><div class="num">// 02</div><h3>Desenho o sistema</h3><p>Modelo de dados, regras e arquitetura pensados pra durar e crescer junto com o negócio.</p></div>
+      <div class="card reveal"><div class="num">// 03</div><h3>Entrego rápido</h3><p>A IA acelera a produção. Você vê o sistema tomando forma sem a espera de um time inteiro.</p></div>
+    </div>
+  </section>
+
+  <!-- O QUE CONSTRUO -->
+  <section>
+    <span class="eyebrow reveal">O que eu construo</span>
+    <h2 class="sec reveal">Sistemas sob medida pra sua operação</h2>
+    <div class="grid-svc">
+      <div class="card reveal"><div class="num">ERP / PCP</div><h3>Sistemas de gestão</h3><p>Produção, estoque, pedidos, planejamento — no lugar de planilhas que travam.</p></div>
+      <div class="card reveal"><div class="num">DATA</div><h3>Dashboards &amp; previsão</h3><p>Indicadores, relatórios e previsão de demanda que ajudam a decidir com dados.</p></div>
+      <div class="card reveal"><div class="num">WEB</div><h3>Aplicações sob medida</h3><p>Ferramentas internas, calculadoras e automações feitas do seu jeito.</p></div>
+      <div class="card reveal"><div class="num">FLOW</div><h3>Digitalização de processos</h3><p>Aquele processo que vive no papel ou na cabeça de alguém, virando sistema.</p></div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section>
+    <span class="eyebrow reveal">Como eu trabalho</span>
+    <h2 class="sec reveal">IA acelerando cada etapa</h2>
+    <p class="lead reveal">A IA não substitui o pensamento — multiplica a velocidade. Eu dirijo, decido e valido; ela executa o trabalho pesado.</p>
+    <div class="flow">
+      <div class="step reveal"><span class="tick"></span><div class="st-n">1</div><h3>Entender</h3><p>Converso, mapeio o processo, acho a dor real.</p></div>
+      <div class="step reveal"><span class="tick"></span><div class="st-n">2</div><h3>Desenhar</h3><p>Modelo dados e regras. Arquitetura antes do código.</p></div>
+      <div class="step reveal"><span class="tick"></span><div class="st-n">3</div><h3>Construir</h3><p>IA acelera a produção — rápido e iterativo.</p></div>
+      <div class="step reveal"><span class="tick"></span><div class="st-n">4</div><h3>Validar</h3><p>Testo com os seus dados reais. Ajusto até funcionar.</p></div>
+    </div>
+  </section>
+
+  <!-- CASE -->
+  <section class="case">
+    <div class="case-head reveal">
+      <span class="tagpill">Case real</span>
+      <span class="eyebrow" style="color:var(--cyan)">indústria de embalagens</span>
+    </div>
+    <h2 class="sec reveal" style="margin-top:1.4rem">Um ERP de produção completo,<br>no lugar de uma planilha frágil</h2>
+
+    <div class="ba">
+      <div class="box reveal"><span class="tag">Antes</span><h4>Planilha no limite</h4><p>Controle de produção que não aguentava vários operadores, sem visão do que produzir nem quando. Decisões no feeling.</p></div>
+      <div class="arrow reveal">→</div>
+      <div class="box after reveal"><span class="tag">Depois</span><h4>Sistema que cresce junto</h4><p>Planejamento, ordens de produção, previsão de demanda e controle — numa ferramenta usada todo dia.</p></div>
+    </div>
+
+    <div class="feat">
+      <div class="f reveal"><span class="fi">▸</span><div><h4>Fila &amp; ordens de produção</h4><p>Geração de OPs, programação por prazo e capacidade, fila por posto.</p></div></div>
+      <div class="f reveal"><span class="fi">▸</span><div><h4>Estrutura de produtos (BOM)</h4><p>Composição multinível e roteiros de produção por família.</p></div></div>
+      <div class="f reveal"><span class="fi">▸</span><div><h4>Previsão de demanda</h4><p>Metodologia própria, validada contra vendas reais.</p></div></div>
+      <div class="f reveal"><span class="fi">▸</span><div><h4>Calculadoras de produção</h4><p>Aproveitamento de material, necessidade e peso de compra.</p></div></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><div class="big" data-count="21" data-suffix="%">0%</div><div class="lbl">erro médio de previsão</div><div class="desc">Metodologia validada contra vendas reais de 24 produtos.</div></div>
+      <div class="stat reveal"><div class="big" data-count="3" data-suffix="">0</div><div class="lbl">canais integrados</div><div class="desc">Mercado Livre, Shopee e B2B — cada um com sua lógica.</div></div>
+      <div class="stat reveal"><div class="big">1</div><div class="lbl">sistema no lugar da planilha</div><div class="desc">Uma ferramenta que cresce com a operação.</div></div>
+    </div>
+  </section>
+
+  <!-- GALERIA PAPIERI -->
+  <section>
+    <span class="eyebrow reveal">Por dentro do sistema</span>
+    <h2 class="sec reveal">Papieri · PCP em telas</h2>
+    <p class="lead reveal">Algumas das telas do sistema em funcionamento — do apontamento de produção ao planejamento de demanda.</p>
+    <div class="gallery">
+      <!-- SUBSTITUA cada .ph por: <img src="CAMINHO_DA_IMAGEM.png" alt="descrição"> -->
+      <div class="shot reveal">
+        <img src="img/fila-de-producao.jpg" alt="Fila de Produção — ordens e prioridades">
+        <span class="label"><b>Fila de Produção</b> · ordens e prioridades</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/apontamento.jpg" alt="Apontamento de produção com cronômetro">
+        <span class="label"><b>Apontamento</b> · tempo por etapa</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/previsao-demanda.jpg" alt="Previsão de demanda por canal">
+        <span class="label"><b>Previsão de Demanda</b> · por canal</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/estrutura-bom.jpg" alt="Estrutura de produtos — BOM multinível">
+        <span class="label"><b>Estrutura de Produtos</b> · BOM multinível</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/roteiro-padrao.jpg" alt="Roteiro-Padrão — etapas de produção">
+        <span class="label"><b>Roteiro-Padrão</b> · etapas por família</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/planejamento-mrp.jpg" alt="Planejamento — geração de OPs (MRP)">
+        <span class="label"><b>Planejamento</b> · geração de OPs (MRP)</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/contas-a-pagar.jpg" alt="Contas a Pagar — títulos e liquidação">
+        <span class="label"><b>Contas a Pagar</b> · títulos, categorias e baixa</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/atividades-auditoria.jpg" alt="Atividades e auditoria dos usuários">
+        <span class="label"><b>Atividades · Auditoria</b> · quem fez o quê e quando</span>
+      </div>
+      <div class="shot reveal">
+        <img src="img/indicadores-producao.jpg" alt="Indicadores da produção — previsto × realizado">
+        <span class="label"><b>Indicadores da Produção</b> · previsto × realizado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTROS PROJETOS -->
+  <section>
+    <span class="eyebrow reveal">Mais do que construí</span>
+    <h2 class="sec reveal">Outros sistemas</h2>
+    <p class="lead reveal">Cada projeto nasce de um problema real de negócio. Aqui estão outros sistemas que desenvolvi na sequência.</p>
+    <div class="projects">
+
+      <!-- PROJETO 2 — Ponto Digital (troque o .ph por: <img src="prints/ponto-dashboard.png" alt="Ponto Digital">) -->
+      <div class="project reveal">
+        <div class="thumb split"><img src="img/ponto-dashboard.jpg" alt="Ponto Digital — Dashboard (histórico de importações)"><img src="img/ponto-relatorio.jpg" alt="Ponto Digital — Relatório de fechamento (dados mascarados)"></div>
+        <div class="pbody">
+          <span class="ptag">Gestão · RH</span>
+          <h3>Ponto Digital</h3>
+          <p>Sistema de ponto eletrônico que importa registros e fecha pagamentos por período. Calcula horas, valores por hora e por dia, passagens, e sinaliza automaticamente colaboradores com registros incompletos.</p>
+          <div class="stack"><span>Web</span><span>IA</span><span>Import/Export</span><span>Freelancers</span></div>
+        </div>
+      </div>
+
+      <!-- PROJETO 3 — Fechamento de Folha (troque o .ph por: <img src="prints/folha-resumo.png" alt="Fechamento de Folha">) -->
+      <div class="project reveal">
+        <div class="thumb split"><img src="img/folha-resumo.jpg" alt="Fechamento de Folha — Resumo do fechamento (dados mascarados)"><img src="img/folha-indicadores.jpg" alt="Fechamento de Folha — Indicadores (dados mascarados)"></div>
+        <div class="pbody">
+          <span class="ptag">Gestão · Financeiro</span>
+          <h3>Fechamento de Folha</h3>
+          <p>Apuração de horas extras e pré-conferência antes da contabilidade. Importa AFD, aplica faixas de HE configuráveis, calcula VT, VR, faltas e adicionais, e entrega indicadores por colaborador.</p>
+          <div class="stack"><span>Web</span><span>IA</span><span>Import AFD</span><span>Regras configuráveis</span></div>
+        </div>
+      </div>
+
+      <!-- PROJETO 4 — Extrator de Dados (troque o .ph por: <img src="prints/extrator.png" alt="Extrator de Dados">) -->
+      <div class="project reveal">
+        <div class="thumb"><img src="img/extrator.jpg" alt="Extrator de Dados para Expedição — tela inicial"></div>
+        <div class="pbody">
+          <span class="ptag">Automação · Dados</span>
+          <h3>Extrator para Expedição</h3>
+          <p>Lê o PDF de pedido/nota fiscal do ERP e gera uma picklist funcional pra operação — em CSV e num PDF de expedição com fonte ampliada e dados sensíveis mascarados automaticamente.</p>
+          <div class="stack"><span>Web</span><span>IA</span><span>Extração PDF</span><span>CSV</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section>
+    <span class="eyebrow reveal">Por que comigo</span>
+    <h2 class="sec reveal">O que você ganha</h2>
+    <div class="why">
+      <div class="w reveal"><span class="chk">[✓]</span><h3>Velocidade real</h3><p>IA acelera a entrega — semanas, não meses.</p></div>
+      <div class="w reveal"><span class="chk">[✓]</span><h3>Feito sob medida</h3><p>Nada de sistema genérico. Construído pro seu processo.</p></div>
+      <div class="w reveal"><span class="chk">[✓]</span><h3>Falo a sua língua</h3><p>Entendo negócio, não só código. A conversa é sobre resolver.</p></div>
+      <div class="w reveal"><span class="chk">[✓]</span><h3>Você acompanha</h3><p>Validação com os seus dados em cada etapa. Sem caixa-preta.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <span class="eyebrow reveal" style="justify-content:center">Vamos construir</span>
+    <h2 class="reveal">Tem um processo que merece virar <span class="accent">sistema</span>?</h2>
+    <p class="reveal">A primeira conversa é pra entender o seu problema — sem compromisso.</p>
+    <a class="btn reveal" href="https://wa.me/5541998675814" target="_blank" rel="noopener"><span class="mono">&gt;</span> Falar com João Henrique</a>
+    <div class="signature reveal">
+      <b>João Henrique</b> · Construtor de Sistemas &amp; Web · acelerado por IA<br>
+      <a href="https://instagram.com/joao.henriquedigital" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">@joao.henriquedigital</a> &nbsp; <a href="https://wa.me/5541998675814" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WhatsApp (41) 99867-5814</a> &nbsp; <a href="mailto:jhguimadc@gmail.com" style="color:var(--cyan);text-decoration:none">jhguimadc@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© João Henrique — 2026</span>
+    <span>Construído com IA · da ideia ao produto</span>
+  </footer>
+
+</div>
+
+<script>
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    // leve stagger dentro da mesma seção
+    el.style.transitionDelay=(i%4*0.06)+'s';
+    io.observe(el);
+  });
+
+  // contadores animados
+  const countIO=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target, target=+el.dataset.count, suf=el.dataset.suffix||'';
+      let cur=0; const dur=1100, t0=performance.now();
+      const tick=(t)=>{
+        const p=Math.min((t-t0)/dur,1);
+        const eased=1-Math.pow(1-p,3);
+        el.textContent=Math.round(eased*target)+suf;
+        if(p<1)requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    })
+  },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+
+  // ---------- lightbox: clique para ampliar a imagem ----------
+  (function(){
+    const lb=document.createElement('div');
+    lb.className='lightbox';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');
+    lb.innerHTML='<button class="lb-close" aria-label="Fechar">\u2715</button><img alt=""><div class="lb-cap"></div>';
+    document.body.appendChild(lb);
+    const lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap');
+    function openLb(src,cap){lbImg.src=src;lbCap.textContent=cap||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+    function closeLb(){lb.classList.remove('open');lbImg.removeAttribute('src');document.body.style.overflow='';}
+    lb.addEventListener('click',closeLb);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
+    document.querySelectorAll('.shot img,.project .thumb img').forEach(img=>{
+      img.addEventListener('click',()=>{
+        const box=img.closest('.shot,.project');
+        const lbl=box?box.querySelector('.label,.ptag'):null;
+        const cap=(img.alt||'').trim()||(lbl?lbl.textContent.replace(/\s+/g,' ').trim():'');
+        openLb(img.currentSrc||img.src,cap);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
