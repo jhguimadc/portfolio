@@ -183,6 +183,7 @@
   }
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,107,53,.5)}
   .btn .mono{font-size:.9rem}
+  .btn-note{margin-top:1.1rem;font-size:.85rem;color:var(--mute)}
   .signature{margin-top:3rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--mute)}
   .signature b{color:var(--paper);font-weight:500}
 
@@ -190,7 +191,12 @@
 
   footer{padding:2.5rem clamp(1.4rem,6vw,7rem);border-top:1px solid var(--line-soft);
     font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--mute);
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem}
+  .foot-contacts{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;justify-content:center}
+  .foot-contacts a{color:#A9B6C6;text-decoration:none;display:inline-flex;align-items:center;gap:.45rem;transition:color .2s}
+  .foot-contacts a:hover{color:var(--spark)}
+  .foot-contacts .ico{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  @media(max-width:760px){footer{flex-direction:column;text-align:center}}
 
   /* ---------- galeria de screenshots ---------- */
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:1.4rem}
@@ -448,7 +454,7 @@
   </section>
   <section>
     <span class="eyebrow reveal">Por que comigo?</span>
-    <h2 class="sec reveal">O que você ganha></h2>
+    <h2 class="sec reveal">O que você ganha?</h2>
     <div class="why">
       <div class="w reveal"><span class="chk">[✓]</span><h3>Velocidade real</h3><p>IA acelera a entrega — semanas, não meses.</p></div>
       <div class="w reveal"><span class="chk">[✓]</span><h3>Feito sob medida</h3><p>Nada de sistema genérico. Construído pro seu processo.</p></div>
@@ -459,46 +465,36 @@
 
   <!-- CTA -->
   <section class="cta">
-    <p class="kicker mono">O que vamos construir?</p>
- 
-    <h2>Tem um processo que<br>merece virar <span class="laranja">sistema</span>?</h2>
- 
-    <p class="sub">A primeira conversa já é trabalho: eu mapeio seu processo
-      e te digo se vale a pena virar sistema — inclusive quando a
-      resposta é “não vale”.</p>
- 
-    <a class="botao" href="#">Quero meu diagnóstico gratuito</a>
-    <p class="microcopy">Abre direto no meu WhatsApp — respondo no mesmo dia.</p>
- 
-    <!-- Apenas nome + título. Contatos foram pro rodapé. -->
-    <p class="assinatura mono"><strong>João Henrique</strong> · Construtor de sistemas sob medida</p>
-  </section>
- 
-  <!-- ===== RODAPÉ ===== -->
-  <footer>
-    <div class="rodape-inner mono">
-      <span>© João Henrique — 2026</span>
- 
-      <nav class="rodape-contatos">
-        <a href="#">
-          <svg class="icone" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          (41) 99867-5814
-        </a>
-        <a href="#">
-          <svg class="icone" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          @joao.henriquedigital
-        </a>
-        <a href="#">
-          <svg class="icone" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          jnguimadc@gmail.com
-        </a>
-      </nav>
- 
-      <span class="tagline">IA na construção. Gente na direção.</span>
+    <span class="eyebrow reveal" style="justify-content:center">O que vamos construir?</span>
+    <h2 class="reveal">Tem um processo que merece virar <span class="accent">sistema</span>?</h2>
+    <p class="reveal">A primeira conversa já é trabalho: eu mapeio seu processo e te digo se vale a pena virar sistema — inclusive quando a resposta é "não vale".</p>
+    <a class="btn reveal" href="https://wa.me/5541998675814" target="_blank" rel="noopener"><span class="mono">&gt;</span> Quero meu diagnóstico gratuito</a>
+    <p class="btn-note reveal">Abre direto no meu WhatsApp — respondo no mesmo dia.</p>
+    <div class="signature reveal">
+      <b>João Henrique</b> · Construtor de sistemas sob medida
     </div>
+  </section>
+
+  <footer>
+    <span>© João Henrique — 2026</span>
+    <nav class="foot-contacts">
+      <a href="https://wa.me/5541998675814" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        (41) 99867-5814
+      </a>
+      <a href="https://instagram.com/joao.henriquedigital" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @joao.henriquedigital
+      </a>
+      <a href="mailto:jhguimadc@gmail.com" aria-label="E-mail">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        jhguimadc@gmail.com
+      </a>
+    </nav>
+    <span>IA na construção. Gente na direção.</span>
   </footer>
- 
-</body>
+
+</div>
 
 <script>
   // reveal on scroll
