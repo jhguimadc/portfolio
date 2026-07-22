@@ -276,6 +276,45 @@
   .project .thumb.split{display:flex;gap:2px;background:var(--ink);height:auto;aspect-ratio:16/9}
   .project .thumb.split img{flex:1;min-width:0;width:auto;height:100%;object-fit:cover;object-position:top left;border-right:1px solid var(--line-soft)}
   .project .thumb.split img:last-child{border-right:none}
+
+  /* ---------- carrossel nos cards de projeto ---------- */
+  .thumb.carousel{overflow:hidden}
+  .carousel .track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+  .carousel .track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+  .carousel .cnav{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+    width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,25,41,.72);border:1px solid var(--line-soft);border-radius:4px;
+    color:var(--paper);font-size:1rem;line-height:1;cursor:pointer;
+    transition:border-color .2s,color .2s;font-family:'JetBrains Mono',monospace;
+  }
+  .carousel .cnav:hover{border-color:var(--spark);color:var(--spark)}
+  .carousel .cnav.prev{left:8px}
+  .carousel .cnav.next{right:8px}
+  .carousel .dots{position:absolute;bottom:9px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:7px}
+  .carousel .dots button{
+    width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(237,241,245,.35);transition:background .25s,transform .25s;
+  }
+  .carousel .dots button.on{background:var(--spark);transform:scale(1.25)}
+  @media(prefers-reduced-motion:reduce){.carousel .track{transition:none}}
+
+  /* ---------- carrossel largo da galeria ERP ---------- */
+  .gcarousel{position:relative;margin-top:1.4rem;border:1px solid var(--line-soft);
+    border-radius:6px;overflow:hidden;background:var(--blueprint-2)}
+  .gcarousel .gslide{position:relative;flex:0 0 100%;min-width:0;aspect-ratio:16/9;background:var(--ink)}
+  .gcarousel .gslide img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;cursor:zoom-in}
+  .gcarousel .label{position:absolute;left:0;right:0;bottom:0;margin:0;padding:1rem 1.2rem .9rem;
+    background:linear-gradient(transparent,rgba(10,25,41,.94));
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--paper);z-index:2}
+  .gcarousel .label b{color:var(--spark)}
+  .gcarousel .cnav{width:38px;height:38px;font-size:1.3rem}
+  .gcarousel .cnav.prev{left:14px}
+  .gcarousel .cnav.next{right:14px}
+  .gcarousel .dots{bottom:auto;top:12px} /* bolinhas no topo pra não brigar com a legenda */
+  @media(max-width:720px){
+    .gcarousel .gslide{aspect-ratio:4/3} /* mais alto no celular, screenshot legível */
+  }
 </style>
 </head>
 <body>
@@ -367,46 +406,23 @@
   <!-- GALERIA PAPIERI -->
   <section>
     <span class="eyebrow reveal">Por dentro do sistema</span>
-    <h2 class="sec reveal">Sistema de ERP</h2>
-    <p class="lead reveal">Algumas das telas do sistema em funcionamento — do apontamento de produção ao planejamento de demanda.</p>
-    <div class="gallery">
-      <!-- SUBSTITUA cada .ph por: <img src="CAMINHO_DA_IMAGEM.png" alt="descrição"> -->
-      <div class="shot reveal">
-        <img src="img/fila-de-producao.jpg" alt="Fila de Produção — ordens e prioridades">
-        <span class="label"><b>Fila de Produção</b> · ordens e prioridades</span>
+    <h2 class="sec reveal">Sistemas de PCP/ERP</h2>
+    <p class="lead reveal">Algumas das telas do sistema em funcionamento — do planejamento de demanda ao apontamento da produção e controle da operação.</p>
+    <div class="carousel gcarousel reveal" data-carousel>
+      <div class="track">
+        <figure class="gslide"><img src="img/fila-de-producao.jpg" alt="Fila de Produção — ordens e prioridades"><figcaption class="label"><b>Fila de Produção</b> · ordens e prioridades</figcaption></figure>
+        <figure class="gslide"><img src="img/apontamento.jpg" alt="Apontamento de produção com cronômetro"><figcaption class="label"><b>Apontamento</b> · tempo por etapa</figcaption></figure>
+        <figure class="gslide"><img src="img/previsao-demanda.jpg" alt="Previsão de demanda por canal"><figcaption class="label"><b>Previsão de Demanda</b> · por canal</figcaption></figure>
+        <figure class="gslide"><img src="img/estrutura-bom.jpg" alt="Estrutura de produtos — BOM multinível"><figcaption class="label"><b>Estrutura de Produtos</b> · BOM multinível</figcaption></figure>
+        <figure class="gslide"><img src="img/roteiro-padrao.jpg" alt="Roteiro-Padrão — etapas de produção"><figcaption class="label"><b>Roteiro-Padrão</b> · etapas por família</figcaption></figure>
+        <figure class="gslide"><img src="img/planejamento-mrp.jpg" alt="Planejamento — geração de OPs (MRP)"><figcaption class="label"><b>Planejamento</b> · geração de OPs (MRP)</figcaption></figure>
+        <figure class="gslide"><img src="img/contas-a-pagar.jpg" alt="Contas a Pagar — títulos e liquidação"><figcaption class="label"><b>Contas a Pagar</b> · títulos, categorias e baixa</figcaption></figure>
+        <figure class="gslide"><img src="img/atividades-auditoria.jpg" alt="Atividades e auditoria dos usuários"><figcaption class="label"><b>Atividades · Auditoria</b> · quem fez o quê e quando</figcaption></figure>
+        <figure class="gslide"><img src="img/indicadores-producao.jpg" alt="Indicadores da produção — previsto × realizado"><figcaption class="label"><b>Indicadores da Produção</b> · previsto × realizado</figcaption></figure>
       </div>
-      <div class="shot reveal">
-        <img src="img/apontamento.jpg" alt="Apontamento de produção com cronômetro">
-        <span class="label"><b>Apontamento</b> · tempo por etapa</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/previsao-demanda.jpg" alt="Previsão de demanda por canal">
-        <span class="label"><b>Previsão de Demanda</b> · por canal</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/estrutura-bom.jpg" alt="Estrutura de produtos — BOM multinível">
-        <span class="label"><b>Estrutura de Produtos</b> · BOM multinível</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/roteiro-padrao.jpg" alt="Roteiro-Padrão — etapas de produção">
-        <span class="label"><b>Roteiro-Padrão</b> · etapas por família</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/planejamento-mrp.jpg" alt="Planejamento — geração de OPs (MRP)">
-        <span class="label"><b>Planejamento</b> · geração de OPs (MRP)</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/contas-a-pagar.jpg" alt="Contas a Pagar — títulos e liquidação">
-        <span class="label"><b>Contas a Pagar</b> · títulos, categorias e baixa</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/atividades-auditoria.jpg" alt="Atividades e auditoria dos usuários">
-        <span class="label"><b>Atividades · Auditoria</b> · quem fez o quê e quando</span>
-      </div>
-      <div class="shot reveal">
-        <img src="img/indicadores-producao.jpg" alt="Indicadores da produção — previsto × realizado">
-        <span class="label"><b>Indicadores da Produção</b> · previsto × realizado</span>
-      </div>
+      <button class="cnav prev" type="button" aria-label="Foto anterior">&lsaquo;</button>
+      <button class="cnav next" type="button" aria-label="Próxima foto">&rsaquo;</button>
+      <div class="dots"></div>
     </div>
   </section>
 
@@ -419,7 +435,15 @@
 
       <!-- PROJETO 2 — Ponto Digital (troque o .ph por: <img src="prints/ponto-dashboard.png" alt="Ponto Digital">) -->
       <div class="project reveal">
-        <div class="thumb split"><img src="img/ponto-dashboard.jpg" alt="Ponto Digital — Dashboard (histórico de importações)"><img src="img/ponto-relatorio.jpg" alt="Ponto Digital — Relatório de fechamento (dados mascarados)"></div>
+        <div class="thumb carousel" data-carousel>
+          <div class="track">
+            <img src="img/ponto-dashboard.jpg" alt="Ponto Digital — Dashboard (histórico de importações)">
+            <img src="img/ponto-relatorio.jpg" alt="Ponto Digital — Relatório de fechamento (dados mascarados)">
+          </div>
+          <button class="cnav prev" type="button" aria-label="Foto anterior">&lsaquo;</button>
+          <button class="cnav next" type="button" aria-label="Próxima foto">&rsaquo;</button>
+          <div class="dots"></div>
+        </div>
         <div class="pbody">
           <span class="ptag">Gestão · RH</span>
           <h3>Ponto Digital</h3>
@@ -430,7 +454,15 @@
 
       <!-- PROJETO 3 — Fechamento de Folha (troque o .ph por: <img src="prints/folha-resumo.png" alt="Fechamento de Folha">) -->
       <div class="project reveal">
-        <div class="thumb split"><img src="img/folha-resumo.jpg" alt="Fechamento de Folha — Resumo do fechamento (dados mascarados)"><img src="img/folha-indicadores.jpg" alt="Fechamento de Folha — Indicadores (dados mascarados)"></div>
+        <div class="thumb carousel" data-carousel>
+          <div class="track">
+            <img src="img/folha-resumo.jpg" alt="Fechamento de Folha — Resumo do fechamento (dados mascarados)">
+            <img src="img/folha-indicadores.jpg" alt="Fechamento de Folha — Indicadores (dados mascarados)">
+          </div>
+          <button class="cnav prev" type="button" aria-label="Foto anterior">&lsaquo;</button>
+          <button class="cnav next" type="button" aria-label="Próxima foto">&rsaquo;</button>
+          <div class="dots"></div>
+        </div>
         <div class="pbody">
           <span class="ptag">Gestão · Financeiro</span>
           <h3>Fechamento de Folha</h3>
@@ -525,6 +557,53 @@
   },{threshold:.6});
   document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
 
+  // ---------- carrossel dos cards de projeto ----------
+  document.querySelectorAll('[data-carousel]').forEach(c=>{
+    const track=c.querySelector('.track');
+    const imgs=track.querySelectorAll('img');
+    if(imgs.length<2)return;
+    const dotsBox=c.querySelector('.dots');
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i=0,timer=null;
+
+    imgs.forEach((_,k)=>{
+      const d=document.createElement('button');
+      d.type='button';d.setAttribute('aria-label','Ir para foto '+(k+1));
+      if(k===0)d.classList.add('on');
+      d.addEventListener('click',()=>go(k,true));
+      dotsBox.appendChild(d);
+    });
+    const dots=dotsBox.querySelectorAll('button');
+
+    function go(k,user){
+      i=(k+imgs.length)%imgs.length;
+      track.style.transform='translateX(-'+(i*100)+'%)';
+      dots.forEach((d,x)=>d.classList.toggle('on',x===i));
+      if(user)restart();
+    }
+    function restart(){
+      if(reduced)return;
+      clearInterval(timer);
+      timer=setInterval(()=>go(i+1),4500);
+    }
+    c.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();go(i-1,true)});
+    c.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();go(i+1,true)});
+    c.addEventListener('mouseenter',()=>clearInterval(timer));
+    c.addEventListener('mouseleave',restart);
+
+    // swipe no touch
+    let x0=null;
+    c.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+    c.addEventListener('touchend',e=>{
+      if(x0===null)return;
+      const dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40)go(i+(dx<0?1:-1),true);
+      x0=null;
+    },{passive:true});
+
+    restart();
+  });
+
   // ---------- lightbox: clique para ampliar a imagem ----------
   (function(){
     const lb=document.createElement('div');
@@ -536,7 +615,7 @@
     function closeLb(){lb.classList.remove('open');lbImg.removeAttribute('src');document.body.style.overflow='';}
     lb.addEventListener('click',closeLb);
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
-    document.querySelectorAll('.shot img,.project .thumb img').forEach(img=>{
+    document.querySelectorAll('.shot img,.project .thumb img,.gcarousel img').forEach(img=>{
       img.addEventListener('click',()=>{
         const box=img.closest('.shot,.project');
         const lbl=box?box.querySelector('.label,.ptag'):null;
