@@ -1,0 +1,21 @@
+{
+  "name": "Paleta de Marca — Ecossistema JH",
+  "description": "Padrão oficial de cores para todos os projetos do ecossistema.",
+  "concept": "Blueprint técnico (azul profundo) + acentos de energia (laranja/âmbar) e dado (ciano).",
+  "colors": {
+    "blueprint":   { "value": "#0B2A4A", "use": "Fundo primário — azul planta técnica profundo" },
+    "blueprint-2": { "value": "#0E3358", "use": "Fundo secundário / superfícies elevadas" },
+    "ink":         { "value": "#0A1929", "use": "Fundo mais escuro / contraste máximo" },
+    "paper":       { "value": "#EDF1F5", "use": "Fundo claro — branco-azulado frio" },
+    "line":        { "value": "#2B5580", "use": "Linhas do grid / bordas" },
+    "line-soft":   { "value": "#1B4270", "use": "Bordas suaves / divisores" },
+    "spark":       { "value": "#FF6B35", "use": "Acento primário — laranja elétrico (IA/energia)" },
+    "spark-2":     { "value": "#FFB627", "use": "Acento secundário — âmbar" },
+    "cyan":        { "value": "#4DD0E1", "use": "Ciano técnico — dado / medida" },
+    "white":       { "value": "#FFFFFF", "use": "Alto contraste" },
+    "text-strong": { "value": "#B9CBDD", "use": "Texto de destaque" },
+    "text":        { "value": "#9DB2C7", "use": "Texto de corpo padrão" },
+    "text-soft":   { "value": "#A9B6C6", "use": "Texto de apoio" },
+    "mute":        { "value": "#7C93AB", "use": "Texto atenuado / legendas" }
+  }
+}

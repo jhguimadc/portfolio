@@ -1,0 +1,28 @@
+/*
+ * Paleta de Marca — Ecossistema JH
+ * Padrão oficial de cores. Importe este arquivo e use as variáveis via var(--jh-*).
+ * Conceito: blueprint técnico (azul profundo) + acentos de energia (laranja/âmbar) e dado (ciano).
+ */
+:root {
+  /* Fundos / superfícies */
+  --jh-blueprint:   #0B2A4A; /* fundo primário — azul planta técnica profundo */
+  --jh-blueprint-2: #0E3358; /* fundo secundário / superfícies elevadas */
+  --jh-ink:         #0A1929; /* fundo mais escuro / contraste máximo */
+  --jh-paper:       #EDF1F5; /* fundo claro — branco-azulado frio */
+
+  /* Linhas / bordas */
+  --jh-line:        #2B5580; /* linhas do grid / bordas */
+  --jh-line-soft:   #1B4270; /* bordas suaves / divisores */
+
+  /* Acentos */
+  --jh-spark:       #FF6B35; /* acento primário — laranja elétrico (IA/energia) */
+  --jh-spark-2:     #FFB627; /* acento secundário — âmbar */
+  --jh-cyan:        #4DD0E1; /* ciano técnico — dado / medida */
+
+  /* Texto */
+  --jh-white:       #FFFFFF; /* alto contraste */
+  --jh-text-strong: #B9CBDD; /* texto de destaque */
+  --jh-text:        #9DB2C7; /* corpo padrão */
+  --jh-text-soft:   #A9B6C6; /* apoio */
+  --jh-mute:        #7C93AB; /* atenuado / legendas */
+}
