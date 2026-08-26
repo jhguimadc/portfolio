@@ -3,39 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>João Henrique · Construtor de Sistemas sob medida (ERP, PCP, Web)</title>
-
+<title>João Henrique · Construtor de Sistemas Sob Medida (ERP, PCP, Web)</title>
 <!-- ============================================================
      SEO + Open Graph
      TROQUE a URL base abaixo se publicar em domínio próprio.
      Base atual (GitHub Pages padrão): https://jhguimadc.github.io/portfolio/
      ============================================================ -->
-<meta name="description" content="Construo sistemas de gestão sob medida — ERP, PCP, dashboards e aplicações web — acelerados por IA. Da planilha no limite ao software que sua operação usa todo dia. Entrega em semanas.">
+<meta name="description" content="Construo sistemas sob medida para empresas que sentem o ERP pronto limitado e lento. Operacional e administrativo integrados, processos claros e procedimentos intuitivos. Da planilha no limite ao software que sua operação usa todo dia.">
 <meta name="author" content="João Henrique">
-<meta name="keywords" content="sistema sob medida, ERP, PCP, desenvolvimento web, dashboard, previsão de demanda, automação, IA, software de gestão">
+<meta name="keywords" content="sistema sob medida, ERP, PCP, desenvolvimento web, integração de sistemas, dashboard, previsão de demanda, automação, IA, software de gestão">
 <meta name="theme-color" content="#0B2A4A">
 <link rel="canonical" href="https://jhguimadc.github.io/portfolio/">
-
 <!-- Favicon SVG (leve, com a identidade do site) -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
-
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="João Henrique · Construtor de Sistemas">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://jhguimadc.github.io/portfolio/">
-<meta property="og:title" content="Transformo o seu processo em um sistema">
-<meta property="og:description" content="Sistemas de gestão sob medida (ERP, PCP, Web) acelerados por IA. Da planilha no limite ao software que sua operação usa todo dia.">
+<meta property="og:title" content="Construo o sistema que integra a sua operação">
+<meta property="og:description" content="Sistemas sob medida (ERP, PCP, Web) para empresas que vivem de planilha e retrabalho. Operacional e administrativo integrados, com processos claros e intuitivos.">
 <meta property="og:image" content="https://jhguimadc.github.io/portfolio/img/fila-de-producao.jpg">
 <meta property="og:image:alt" content="Tela do sistema de PCP — fila de produção com ordens e prioridades">
-
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Transformo o seu processo em um sistema">
-<meta name="twitter:description" content="Sistemas de gestão sob medida (ERP, PCP, Web) acelerados por IA. Entrega em semanas.">
+<meta name="twitter:title" content="Construo o sistema que integra a sua operação">
+<meta name="twitter:description" content="Sistemas sob medida (ERP, PCP, Web) — operacional e administrativo integrados, com processos claros e intuitivos.">
 <meta name="twitter:image" content="https://jhguimadc.github.io/portfolio/img/fila-de-producao.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -63,7 +58,6 @@
     line-height:1.5;
   }
   .mono{font-family:'JetBrains Mono',monospace}
-
   /* grid de planta técnica de fundo */
   .blueprint-grid{
     position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -75,7 +69,6 @@
     mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 40%,transparent 100%);
   }
   .content{position:relative;z-index:1}
-
   /* eyebrow técnico */
   .eyebrow{
     font-family:'JetBrains Mono',monospace;
@@ -84,15 +77,13 @@
     display:inline-flex;align-items:center;gap:.6rem;
   }
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--spark)}
-
   section{padding:clamp(4rem,9vw,8rem) clamp(1.4rem,6vw,7rem);position:relative}
-
   /* ---------- HERO ---------- */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative}
   .hero-tag{margin-bottom:2rem;opacity:0;animation:fadeUp .7s .1s forwards}
   .hero h1{
     font-size:clamp(2.4rem,7vw,5.8rem);font-weight:700;line-height:1.02;
-    letter-spacing:-.02em;max-width:16ch;
+    letter-spacing:-.02em;max-width:18ch;
   }
   .hero h1 .l{display:block;opacity:0;transform:translateY(24px);animation:fadeUp .8s forwards}
   .hero h1 .l:nth-child(1){animation-delay:.25s}
@@ -105,12 +96,26 @@
   }
   @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
   .hero p.sub{
-    margin-top:2rem;font-size:clamp(1.05rem,2vw,1.4rem);color:#B9CBDD;max-width:46ch;
+    margin-top:2rem;font-size:clamp(1.05rem,2vw,1.4rem);color:#B9CBDD;max-width:52ch;
     opacity:0;animation:fadeUp .8s .6s forwards;
   }
+  .hero-cta{
+    display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;
+    opacity:0;animation:fadeUp .8s .8s forwards;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:.7rem;background:var(--spark);color:var(--ink);
+    font-weight:700;font-size:1.05rem;padding:1rem 2rem;border-radius:3px;text-decoration:none;
+    font-family:'Space Grotesk';transition:transform .2s,box-shadow .2s;
+    box-shadow:0 0 0 rgba(255,107,53,0);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,107,53,.5)}
+  .btn .mono{font-size:.9rem}
+  .btn.ghost{background:transparent;color:var(--paper);border:1px solid var(--line);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--spark);color:var(--spark);box-shadow:none}
   .hero .meta{
     margin-top:3.5rem;display:flex;gap:2rem;flex-wrap:wrap;
-    opacity:0;animation:fadeUp .8s .8s forwards;
+    opacity:0;animation:fadeUp .8s 1s forwards;
   }
   .hero .meta .m{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--mute)}
   .hero .meta .m b{color:var(--cyan);font-weight:500}
@@ -121,22 +126,17 @@
     display:flex;align-items:center;gap:.6rem;
   }
   .scroll-hint .dot{width:6px;height:6px;border-radius:50%;background:var(--spark);animation:pulse 1.6s infinite}
-
   /* dimensão / linha de medida decorativa no hero */
   .dim-line{position:absolute;right:clamp(1.4rem,6vw,7rem);top:0;bottom:0;width:1px;
     background:linear-gradient(var(--line),transparent);opacity:.5;display:none}
   @media(min-width:900px){.dim-line{display:block}}
-
   @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.6)}}
-
   /* ---------- reveal on scroll ---------- */
   .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
-
   h2.sec{font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.02em;margin:1rem 0 1rem;max-width:20ch}
-  .lead{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#B9CBDD;max-width:56ch;margin-bottom:3rem}
-
+  .lead{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#B9CBDD;max-width:60ch;margin-bottom:3rem}
   /* ---------- cards de serviço (planta) ---------- */
   .grid-svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;margin-top:1rem}
   .card{
@@ -152,7 +152,11 @@
   .card .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--spark);letter-spacing:.1em}
   .card h3{font-size:1.15rem;font-weight:600;margin:.9rem 0 .5rem}
   .card p{font-size:.92rem;color:#9DB2C7}
-
+  /* variantes dor/solução */
+  .card.pain{border-color:var(--spark-2)}
+  .card.pain .num{color:var(--spark-2)}
+  .card.solution{border-color:var(--cyan)}
+  .card.solution .num{color:var(--cyan)}
   /* ---------- processo (linha de montagem) ---------- */
   .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;margin-top:1rem}
   .step{padding:1.8rem 1.6rem;border-left:1px solid var(--line-soft);position:relative}
@@ -162,7 +166,6 @@
   .step h3{font-size:1.1rem;font-weight:600;margin:.7rem 0 .5rem}
   .step p{font-size:.88rem;color:#9DB2C7}
   .step .tick{position:absolute;top:1.9rem;right:1.4rem;width:7px;height:7px;background:var(--cyan);border-radius:50%;opacity:.5}
-
   /* ---------- CASE band ---------- */
   .case{background:var(--ink);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
   .case-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
@@ -176,7 +179,6 @@
   .stat .big{font-size:clamp(2.6rem,6vw,3.8rem);font-weight:700;color:var(--spark);letter-spacing:-.03em;line-height:1;font-family:'Space Grotesk'}
   .stat .lbl{font-weight:600;margin-top:.5rem}
   .stat .desc{font-size:.85rem;color:#9DB2C7;margin-top:.4rem}
-
   /* before -> after */
   .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:stretch;margin-top:1rem}
   @media(max-width:720px){.ba{grid-template-columns:1fr;gap:.8rem}.ba .arrow{transform:rotate(90deg);justify-self:center}}
@@ -187,40 +189,28 @@
   .ba .box h4{font-size:1.05rem;font-weight:600;margin:.6rem 0 .5rem}
   .ba .box p{font-size:.88rem;color:#9DB2C7}
   .ba .arrow{display:flex;align-items:center;color:var(--spark);font-size:1.6rem}
-
   /* feature list do case */
   .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
   .feat .f{display:flex;gap:.9rem;align-items:flex-start;padding:1.1rem;border:1px solid var(--line-soft);border-radius:4px}
   .feat .f .fi{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:.9rem;margin-top:.1rem;flex-shrink:0}
   .feat .f h4{font-size:1rem;font-weight:600}
   .feat .f p{font-size:.85rem;color:#9DB2C7;margin-top:.2rem}
-
   /* ---------- porque ---------- */
   .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:1rem}
   .why .w{padding:1.6rem;border-radius:4px;background:linear-gradient(160deg,var(--blueprint-2),var(--ink));border:1px solid var(--line-soft);position:relative}
   .why .w .chk{color:var(--spark);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.9rem}
   .why .w h3{font-size:1.1rem;font-weight:600;margin:.6rem 0 .4rem}
   .why .w p{font-size:.9rem;color:#9DB2C7}
-
   /* ---------- CTA ---------- */
   .cta{text-align:center;background:radial-gradient(ellipse 70% 100% at 50% 100%,var(--blueprint-2),var(--blueprint))}
-  .cta h2{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:700;letter-spacing:-.02em;max-width:18ch;margin:1rem auto 1.2rem}
+  .cta h2{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:700;letter-spacing:-.02em;max-width:20ch;margin:1rem auto 1.2rem}
   .cta .accent{color:var(--spark)}
-  .cta p{color:#B9CBDD;max-width:44ch;margin:0 auto 2.5rem;font-size:1.1rem}
-  .btn{
-    display:inline-flex;align-items:center;gap:.7rem;background:var(--spark);color:var(--ink);
-    font-weight:700;font-size:1.05rem;padding:1rem 2rem;border-radius:3px;text-decoration:none;
-    font-family:'Space Grotesk';transition:transform .2s,box-shadow .2s;
-    box-shadow:0 0 0 rgba(255,107,53,0);
-  }
-  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,107,53,.5)}
-  .btn .mono{font-size:.9rem}
+  .cta p{color:#B9CBDD;max-width:50ch;margin:0 auto 2.5rem;font-size:1.1rem}
+  .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
   .btn-note{margin-top:1.1rem;font-size:.85rem;color:var(--mute)}
   .signature{margin-top:3rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--mute)}
   .signature b{color:var(--paper);font-weight:500}
-
   .placeholder{color:var(--spark-2);border-bottom:1px dashed var(--spark-2);padding-bottom:1px}
-
   footer{padding:2.5rem clamp(1.4rem,6vw,7rem);border-top:1px solid var(--line-soft);
     font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--mute);
     display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem}
@@ -229,7 +219,6 @@
   .foot-contacts a:hover{color:var(--spark)}
   .foot-contacts .ico{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
   @media(max-width:760px){footer{flex-direction:column;text-align:center}}
-
   /* ---------- galeria de screenshots ---------- */
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:1.4rem}
   .shot{
@@ -257,7 +246,6 @@
     z-index:2;
   }
   .shot .label b{color:var(--spark)}
-
   /* ---------- grade de portfólio (múltiplos projetos) ---------- */
   .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin-top:1.4rem}
   .project{
@@ -279,13 +267,11 @@
   .project p{font-size:.9rem;color:#9DB2C7;margin-bottom:.9rem}
   .project .stack{display:flex;flex-wrap:wrap;gap:.4rem}
   .project .stack span{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--mute);border:1px solid var(--line-soft);padding:.2rem .5rem;border-radius:2px}
-
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
-    .hero h1 .l,.hero-tag,.hero p.sub,.hero .meta,.scroll-hint{opacity:1;transform:none}
+    .hero h1 .l,.hero-tag,.hero p.sub,.hero .meta,.hero-cta,.scroll-hint{opacity:1;transform:none}
   }
-
   /* ---------- lightbox (ampliar imagem) ---------- */
   .shot img,.project .thumb img{cursor:zoom-in}
   .shot::after{content:"\2922";position:absolute;top:10px;left:10px;z-index:3;font-size:.95rem;color:var(--paper);
@@ -304,11 +290,9 @@
   .lightbox .lb-cap{position:absolute;bottom:1.1rem;left:0;right:0;text-align:center;padding:0 2rem;
     font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#B9CBDD;letter-spacing:.03em}
   @media(prefers-reduced-motion:reduce){.shot::after{transition:none}}
-
   .project .thumb.split{display:flex;gap:2px;background:var(--ink);height:auto;aspect-ratio:16/9}
   .project .thumb.split img{flex:1;min-width:0;width:auto;height:100%;object-fit:cover;object-position:top left;border-right:1px solid var(--line-soft)}
   .project .thumb.split img:last-child{border-right:none}
-
   /* ---------- carrossel nos cards de projeto ---------- */
   .thumb.carousel{overflow:hidden}
   .carousel .track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
@@ -330,7 +314,6 @@
   }
   .carousel .dots button.on{background:var(--spark);transform:scale(1.25)}
   @media(prefers-reduced-motion:reduce){.carousel .track{transition:none}}
-
   /* ---------- carrossel largo da galeria ERP ---------- */
   .gcarousel{position:relative;margin-top:1.4rem;border:1px solid var(--line-soft);
     border-radius:6px;overflow:hidden;background:var(--blueprint-2)}
@@ -352,36 +335,47 @@
 <body>
 <div class="blueprint-grid"></div>
 <div class="content">
-
   <!-- HERO -->
   <section class="hero">
     <div class="dim-line"></div>
-    <div class="hero-tag"><span class="eyebrow">Construtor de Sistemas &amp; Web · acelerado por IA</span></div>
+    <div class="hero-tag"><span class="eyebrow">Construtor de Sistemas Sob Medida · ERP · PCP · Web</span></div>
     <h1>
-      <span class="l">Eu transformo o seu</span>
-      <span class="l">processo em um <span class="accent">sistema</span></span>
+      <span class="l">O ERP pronto não integra</span>
+      <span class="l">sua operação. Eu construo o <span class="accent">sistema</span>.</span>
     </h1>
-    <p class="sub">Aplicações web e sistemas de gestão sob medida. Da planilha no limite ao software que a sua operação usa todo dia.</p>
+    <p class="sub">Sistemas sob medida para empresas que vivem de planilha e retrabalho — integrando o operacional e o administrativo, com processos claros e procedimentos intuitivos para o seu time usar sem travar.</p>
+    <div class="hero-cta">
+      <a class="btn" href="https://wa.me/5541998675814" target="_blank" rel="noopener"><span class="mono">&gt;</span> Quero um sistema para minha operação</a>
+      <a class="btn ghost" href="#dor"><span class="mono">▾</span> Entender como resolve</a>
+    </div>
     <div class="meta">
-      <span class="m">// <b>arquitetura</b> de dados e regras</span>
-      <span class="m">// <b>IA</b> acelerando a execução</span>
-      <span class="m">// <b>entrega</b> em semanas</span>
+      <span class="m">// <b>integração</b> operacional + administrativo</span>
+      <span class="m">// <b>processos</b> claros e intuitivos</span>
+      <span class="m">// <b>gargalo</b> sob controle</span>
     </div>
     <div class="scroll-hint"><span class="dot"></span> role para ver o trabalho</div>
   </section>
-
   <!-- QUEM -->
   <section>
     <span class="eyebrow reveal">Quem está por trás?</span>
     <h2 class="sec reveal">Entendo sua operação.<br> Desenho a solução. Entrego funcionando.</h2>
-    <p class="lead reveal">Eu não entrego um orçamento fechado e sumo por três meses. Eu mergulho em como o seu negócio funciona de verdade, desenho a solução com você e construo — usando IA como alavanca pra encurtar o que levaria meses.</p>
+    <p class="lead reveal">Eu não entrego um orçamento fechado e sumo por três meses. Eu mergulho em como o seu negócio funciona de verdade, mapeio onde trava e construo o sistema que integra — usando IA como alavanca pra encurtar o que levaria meses.</p>
     <div class="grid-svc">
       <div class="card reveal"><div class="num">// 01</div><h3>Entendo o negócio</h3><p>Antes de qualquer linha de código, entendo a operação, o gargalo e o que realmente importa resolver.</p></div>
       <div class="card reveal"><div class="num">// 02</div><h3>Desenho o sistema</h3><p>Modelo de dados, regras e arquitetura pensados pra durar e crescer junto com o negócio.</p></div>
       <div class="card reveal"><div class="num">// 03</div><h3>Entrego rápido</h3><p>A IA acelera a produção. Você vê o sistema tomando forma sem a espera de um time inteiro.</p></div>
     </div>
   </section>
-
+  <!-- DOR / GARGALO -->
+  <section id="dor">
+    <span class="eyebrow reveal">A dor real da operação</span>
+    <h2 class="sec reveal">O gargalo nunca fica no mesmo lugar</h2>
+    <p class="lead reveal">Hoje trava na fila de produção, amanhã no apontamento, depois na estrutura de produtos. Sistemas prontos são estáticos — não acompanham esse movimento. Com o sistema sob medida você ganha visibilidade e controle para reduzir o gargalo, onde quer que ele esteja. Implementação de verdade.</p>
+    <div class="grid-svc">
+      <div class="card pain reveal"><div class="num">SEM O SISTEMA CERTO</div><h3>Processo sem controle</h3><p>ERP limitado e lento, operacional e administrativo desconectados, cada um faz de um jeito — e o gargalo só aparece quando já travou.</p></div>
+      <div class="card solution reveal"><div class="num">COM O SISTEMA SOB MEDIDA</div><h3>Controle de verdade</h3><p>Visão do processo inteiro, procedimentos claros e intuitivos, dados confiáveis de ponta a ponta — e o gargalo reduzido onde quer que ele esteja.</p></div>
+    </div>
+  </section>
   <!-- O QUE CONSTRUO -->
   <section>
     <span class="eyebrow reveal">O que eu construo?</span>
@@ -393,20 +387,18 @@
       <div class="card reveal"><div class="num">FLOW</div><h3>Digitalização de processos</h3><p>Aquele processo que vive no papel ou na cabeça de alguém, virando sistema.</p></div>
     </div>
   </section>
-
   <!-- PROCESSO -->
   <section>
     <span class="eyebrow reveal">Como eu trabalho?</span>
-    <h2 class="sec reveal">IA acelerando cada etapa</h2>
+    <h2 class="sec reveal">Do diagnóstico à implantação de verdade</h2>
     <p class="lead reveal">A IA não substitui o pensamento — multiplica a velocidade. Eu dirijo, decido e valido; ela executa o trabalho pesado.</p>
     <div class="flow">
-      <div class="step reveal"><span class="tick"></span><div class="st-n">1</div><h3>Compreender</h3><p>Converso, mapeio o processo, acho a dor real.</p></div>
+      <div class="step reveal"><span class="tick"></span><div class="st-n">1</div><h3>Compreender</h3><p>Converso, mapeio o processo e acho a dor real — onde o gargalo está.</p></div>
       <div class="step reveal"><span class="tick"></span><div class="st-n">2</div><h3>Desenhar</h3><p>Modelo dados e regras. Arquitetura antes do código.</p></div>
       <div class="step reveal"><span class="tick"></span><div class="st-n">3</div><h3>Construir</h3><p>IA acelera a produção — rápido e iterativo.</p></div>
-      <div class="step reveal"><span class="tick"></span><div class="st-n">4</div><h3>Validar</h3><p>Testo com os seus dados reais. Ajusto até funcionar.</p></div>
+      <div class="step reveal"><span class="tick"></span><div class="st-n">4</div><h3>Implantar</h3><p>Implementação de verdade: treino o time e acompanho até rodar sozinho.</p></div>
     </div>
   </section>
-
   <!-- CASE -->
   <section class="case">
     <div class="case-head reveal">
@@ -414,27 +406,23 @@
       <span class="eyebrow" style="color:var(--cyan)">indústria de embalagens</span>
     </div>
     <h2 class="sec reveal" style="margin-top:1.4rem">Um ERP de produção completo,<br>no lugar de uma planilha frágil</h2>
-
     <div class="ba">
       <div class="box reveal"><span class="tag">Antes</span><h4>Planilha no limite</h4><p>Controle de produção que não aguentava vários operadores, sem visão do que produzir nem quando. Decisões no feeling.</p></div>
       <div class="arrow reveal">→</div>
       <div class="box after reveal"><span class="tag">Depois</span><h4>Sistema que cresce junto</h4><p>Planejamento, ordens de produção, previsão de demanda e controle — numa ferramenta usada todo dia.</p></div>
     </div>
-
     <div class="feat">
       <div class="f reveal"><span class="fi">▸</span><div><h4>Fila &amp; ordens de produção</h4><p>Geração de OPs, programação por prazo e capacidade, fila por posto.</p></div></div>
       <div class="f reveal"><span class="fi">▸</span><div><h4>Estrutura de produtos (BOM)</h4><p>Composição multinível e roteiros de produção por família.</p></div></div>
       <div class="f reveal"><span class="fi">▸</span><div><h4>Previsão de demanda</h4><p>Metodologia própria, validada contra vendas reais.</p></div></div>
       <div class="f reveal"><span class="fi">▸</span><div><h4>Calculadoras de produção</h4><p>Aproveitamento de material, necessidade e peso de compra.</p></div></div>
     </div>
-
     <div class="stats">
       <div class="stat reveal"><div class="big" data-count="21" data-suffix="%">0%</div><div class="lbl">erro médio de previsão</div><div class="desc">Metodologia validada contra vendas reais de 24 produtos.</div></div>
       <div class="stat reveal"><div class="big" data-count="3" data-suffix="">0</div><div class="lbl">canais integrados</div><div class="desc">Mercado Livre, Shopee e B2B — cada um com sua lógica.</div></div>
       <div class="stat reveal"><div class="big">1</div><div class="lbl">sistema no lugar da planilha</div><div class="desc">Uma ferramenta que cresce com a operação.</div></div>
     </div>
   </section>
-
   <!-- GALERIA PAPIERI -->
   <section>
     <span class="eyebrow reveal">Por dentro do sistema</span>
@@ -457,14 +445,12 @@
       <div class="dots"></div>
     </div>
   </section>
-
   <!-- OUTROS PROJETOS -->
   <section>
     <span class="eyebrow reveal">Mais do que construí</span>
     <h2 class="sec reveal">Outros sistemas e exemplos:</h2>
     <p class="lead reveal">Cada projeto nasce de um problema real de negócio. Aqui estão outros sistemas que foram desenvolvidos para ganhar controle, clareza e sobretudo velocidade.</p>
     <div class="projects">
-
       <!-- PROJETO 2 — Ponto Digital (troque o .ph por: <img src="prints/ponto-dashboard.png" alt="Ponto Digital">) -->
       <div class="project reveal">
         <div class="thumb carousel" data-carousel>
@@ -483,7 +469,6 @@
           <div class="stack"><span>Web</span><span>IA</span><span>Import/Export</span><span>Freelancers</span></div>
         </div>
       </div>
-
       <!-- PROJETO 3 — Fechamento de Folha (troque o .ph por: <img src="prints/folha-resumo.png" alt="Fechamento de Folha">) -->
       <div class="project reveal">
         <div class="thumb carousel" data-carousel>
@@ -502,7 +487,6 @@
           <div class="stack"><span>Web</span><span>IA</span><span>Import AFD</span><span>Regras configuráveis</span></div>
         </div>
       </div>
-
       <!-- PROJETO 4 — Extrator de Dados (troque o .ph por: <img src="prints/extrator.png" alt="Extrator de Dados">) -->
       <div class="project reveal">
         <div class="thumb"><img src="img/extrator.jpg" alt="Extrator de Dados para Expedição — tela inicial"></div>
@@ -513,7 +497,6 @@
           <div class="stack"><span>Web</span><span>IA</span><span>Extração PDF</span><span>CSV</span></div>
         </div>
       </div>
-
       <!-- PROJETO 5 — CRM de Vendas -->
       <div class="project reveal">
         <div class="thumb carousel" data-carousel>
@@ -533,7 +516,6 @@
           <div class="stack"><span>Web</span><span>IA</span><span>Kanban</span><span>Multiusuário</span></div>
         </div>
       </div>
-
       <!-- PROJETO 6 — Conversor de Lista Full -->
       <div class="project reveal">
         <div class="thumb carousel" data-carousel>
@@ -553,7 +535,6 @@
           <div class="stack"><span>Web</span><span>IA</span><span>Extração PDF</span><span>DE-PARA</span><span>Excel/CSV</span></div>
         </div>
       </div>
-
     </div>
   </section>
   <section>
@@ -566,19 +547,20 @@
       <div class="w reveal"><span class="chk">[✓]</span><h3>Você acompanha</h3><p>Validação com os seus dados em cada etapa. Sem caixa-preta.</p></div>
     </div>
   </section>
-
   <!-- CTA -->
   <section class="cta">
     <span class="eyebrow reveal" style="justify-content:center">O que vamos construir?</span>
-    <h2 class="reveal">Tem um processo que merece virar <span class="accent">sistema</span>?</h2>
-    <p class="reveal">A primeira conversa já é trabalho: eu mapeio seu processo e te digo se vale a pena virar sistema — inclusive quando a resposta é "não vale".</p>
-    <a class="btn reveal" href="https://wa.me/5541998675814" target="_blank" rel="noopener"><span class="mono">&gt;</span> Quero meu diagnóstico gratuito</a>
-    <p class="btn-note reveal">Abre direto no meu WhatsApp — respondo no mesmo dia.</p>
+    <h2 class="reveal">O gargalo muda de lugar.<br>Seu controle precisa <span class="accent">acompanhar</span>.</h2>
+    <p class="reveal">Me conte como a sua operação funciona hoje. Eu mapeio o processo, identifico onde trava e proponho o sistema sob medida que integra tudo — com clareza e procedimentos intuitivos.</p>
+    <div class="btn-row reveal">
+      <a class="btn" href="https://wa.me/5541998675814" target="_blank" rel="noopener"><span class="mono">&gt;</span> Quero meu diagnóstico gratuito</a>
+      <a class="btn ghost" href="mailto:jhguimadc@gmail.com"><span class="mono">✉</span> Enviar e-mail</a>
+    </div>
+    <p class="btn-note reveal">WhatsApp abre direto — respondo no mesmo dia.</p>
     <div class="signature reveal">
       <b>João Henrique</b> · Construtor de sistemas sob medida
     </div>
   </section>
-
   <footer>
     <span>© João Henrique — 2026</span>
     <nav class="foot-contacts">
@@ -597,20 +579,17 @@
     </nav>
     <span>IA na construção. Gente na direção.</span>
   </footer>
-
 </div>
-
 <script>
   // reveal on scroll
   const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)})
   },{threshold:.14});
   document.querySelectorAll('.reveal').forEach((el,i)=>{
     // leve stagger dentro da mesma seção
     el.style.transitionDelay=(i%4*0.06)+'s';
     io.observe(el);
   });
-
   // contadores animados
   const countIO=new IntersectionObserver((es)=>{
     es.forEach(e=>{
@@ -628,7 +607,6 @@
     })
   },{threshold:.6});
   document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
-
   // ---------- carrossel dos cards de projeto ----------
   document.querySelectorAll('[data-carousel]').forEach(c=>{
     const track=c.querySelector('.track');
@@ -637,7 +615,6 @@
     const dotsBox=c.querySelector('.dots');
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let i=0,timer=null;
-
     imgs.forEach((_,k)=>{
       const d=document.createElement('button');
       d.type='button';d.setAttribute('aria-label','Ir para foto '+(k+1));
@@ -646,7 +623,6 @@
       dotsBox.appendChild(d);
     });
     const dots=dotsBox.querySelectorAll('button');
-
     function go(k,user){
       i=(k+imgs.length)%imgs.length;
       track.style.transform='translateX(-'+(i*100)+'%)';
@@ -662,7 +638,6 @@
     c.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();go(i+1,true)});
     c.addEventListener('mouseenter',()=>clearInterval(timer));
     c.addEventListener('mouseleave',restart);
-
     // swipe no touch
     let x0=null;
     c.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
@@ -672,10 +647,8 @@
       if(Math.abs(dx)>40)go(i+(dx<0?1:-1),true);
       x0=null;
     },{passive:true});
-
     restart();
   });
-
   // ---------- lightbox: clique para ampliar a imagem ----------
   (function(){
     const lb=document.createElement('div');
