@@ -68,14 +68,30 @@
   }
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--spark)}
   section{padding:clamp(4rem,9vw,8rem) clamp(1.4rem,6vw,7rem);position:relative}
-  /* ===== FALLBACK: conteúdo começa VISÍVEL =====
-     Só quando o JS roda com sucesso (classe .js no <html>)
-     é que o efeito de aparecer ao rolar é ativado. */
+  /* ===== FALLBACK: conteúdo começa VISÍVEL ===== */
   .reveal{opacity:1;transform:none}
   .js .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .js .reveal.in{opacity:1;transform:none}
   h2.sec{font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.02em;margin:1rem 0 1rem;max-width:20ch}
   .lead{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#B9CBDD;max-width:60ch;margin-bottom:3rem}
+  /* ===== Seções alternadas em fundo claro ===== */
+  section.light{
+    background:#F4F7FA;
+    color:var(--ink);
+  }
+  section.light h2.sec{color:var(--ink)}
+  section.light .lead{color:#5b6b7d}
+  section.light p{color:#5b6b7d}
+  /* cards internos continuam escuros — contraste com o fundo claro */
+  section.light .card h3,
+  section.light .why .w h3,
+  section.light .project h3{color:var(--paper)}
+  section.light .card,
+  section.light .why .w,
+  section.light .project{
+    box-shadow:0 10px 28px -14px rgba(11,42,74,.35);
+  }
+  section.light .gcarousel{background:var(--blueprint-2)}
   /* ---------- HERO ---------- */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative}
   .hero-tag{margin-bottom:2rem;opacity:0;animation:fadeUp .7s .1s forwards}
@@ -262,13 +278,13 @@
 <body>
 <div class="blueprint-grid"></div>
 <div class="content">
-  <!-- HERO -->
+  <!-- HERO (azul) -->
   <section class="hero">
     <div class="dim-line"></div>
     <div class="hero-tag"><span class="eyebrow">Construtor de Sistemas Sob Medida · ERP · PCP · Web</span></div>
     <h1>
       <span class="l">O ERP pronto não integra</span>
-      <span class="l">sua operação. Eu construo o <span class="accent">sistema</span>.</span>
+      <span class="l">sua operação. Eu construo o <span class="accent">sistema.</span>
     </h1>
     <p class="sub">Sistemas sob medida para empresas que vivem de planilha e retrabalho — integrando o operacional e o administrativo, com processos claros e procedimentos intuitivos para o seu time usar sem travar.</p>
     <div class="hero-cta">
@@ -282,8 +298,8 @@
     </div>
     <div class="scroll-hint"><span class="dot"></span> role para ver o trabalho</div>
   </section>
-  <!-- QUEM -->
-  <section>
+  <!-- QUEM (branco) -->
+  <section class="light">
     <span class="eyebrow reveal">Quem está por trás?</span>
     <h2 class="sec reveal">Entendo sua operação.<br> Desenho a solução. Entrego funcionando.</h2>
     <p class="lead reveal">Eu não entrego um orçamento fechado e sumo por três meses. Eu mergulho em como o seu negócio funciona de verdade, mapeio onde trava e construo o sistema que integra — usando IA como alavanca pra encurtar o que levaria meses.</p>
@@ -293,7 +309,7 @@
       <div class="card reveal"><div class="num">// 03</div><h3>Entrego rápido</h3><p>A IA acelera a produção. Você vê o sistema tomando forma sem a espera de um time inteiro.</p></div>
     </div>
   </section>
-  <!-- DOR / GARGALO -->
+  <!-- DOR / GARGALO (azul) -->
   <section id="dor">
     <span class="eyebrow reveal">A dor real da operação</span>
     <h2 class="sec reveal">O gargalo nunca fica no mesmo lugar</h2>
@@ -303,8 +319,8 @@
       <div class="card solution reveal"><div class="num">COM O SISTEMA SOB MEDIDA</div><h3>Controle de verdade</h3><p>Visão do processo inteiro, procedimentos claros e intuitivos, dados confiáveis de ponta a ponta — e o gargalo reduzido onde quer que ele esteja.</p></div>
     </div>
   </section>
-  <!-- O QUE CONSTRUO -->
-  <section>
+  <!-- O QUE CONSTRUO (branco) -->
+  <section class="light">
     <span class="eyebrow reveal">O que eu construo?</span>
     <h2 class="sec reveal">Sistemas sob medida pra sua operação</h2>
     <div class="grid-svc">
@@ -314,7 +330,7 @@
       <div class="card reveal"><div class="num">FLOW</div><h3>Digitalização de processos</h3><p>Aquele processo que vive no papel ou na cabeça de alguém, virando sistema.</p></div>
     </div>
   </section>
-  <!-- PROCESSO -->
+  <!-- PROCESSO (azul) -->
   <section>
     <span class="eyebrow reveal">Como eu trabalho?</span>
     <h2 class="sec reveal">Do diagnóstico à implantação de verdade</h2>
@@ -326,7 +342,7 @@
       <div class="step reveal"><span class="tick"></span><div class="st-n">4</div><h3>Implantar</h3><p>Implementação de verdade: treino o time e acompanho até rodar sozinho.</p></div>
     </div>
   </section>
-  <!-- CASE -->
+  <!-- CASE (azul escuro) -->
   <section class="case">
     <div class="case-head reveal">
       <span class="tagpill">Case real</span>
@@ -350,8 +366,8 @@
       <div class="stat reveal"><div class="big">1</div><div class="lbl">sistema no lugar da planilha</div><div class="desc">Uma ferramenta que cresce com a operação.</div></div>
     </div>
   </section>
-  <!-- GALERIA -->
-  <section>
+  <!-- GALERIA (branco) -->
+  <section class="light">
     <span class="eyebrow reveal">Por dentro do sistema</span>
     <h2 class="sec reveal">Sistemas de PCP/ERP</h2>
     <p class="lead reveal">Algumas das telas do sistema em funcionamento — do planejamento de demanda ao apontamento da produção e controle da operação.</p>
@@ -372,8 +388,8 @@
       <div class="dots"></div>
     </div>
   </section>
-  <!-- OUTROS PROJETOS -->
-  <section>
+  <!-- OUTROS PROJETOS (branco) -->
+  <section class="light">
     <span class="eyebrow reveal">Mais do que construí</span>
     <h2 class="sec reveal">Outros sistemas e exemplos:</h2>
     <p class="lead reveal">Cada projeto nasce de um problema real de negócio. Aqui estão outros sistemas que foram desenvolvidos para ganhar controle, clareza e sobretudo velocidade.</p>
@@ -459,7 +475,7 @@
       </div>
     </div>
   </section>
-  <!-- POR QUE COMIGO -->
+  <!-- POR QUE COMIGO (azul) -->
   <section>
     <span class="eyebrow reveal">Por que comigo?</span>
     <h2 class="sec reveal">O que você ganha?</h2>
@@ -470,12 +486,12 @@
       <div class="w reveal"><span class="chk">[✓]</span><h3>Você acompanha</h3><p>Validação com os seus dados em cada etapa. Sem caixa-preta.</p></div>
     </div>
   </section>
-  <!-- CTA -->
+  <!-- CTA (azul) -->
   <section class="cta">
     <span class="eyebrow reveal" style="justify-content:center">O que vamos construir?</span>
     <h2 class="reveal">O gargalo muda de lugar.<br>Seu controle precisa <span class="accent">acompanhar</span>.</h2>
     <p class="reveal">Me conte como a sua operação funciona hoje. Eu mapeio o processo, identifico onde trava e proponho o sistema sob medida que integra tudo — com clareza e procedimentos intuitivos.</p>
-        <div class="btn-row reveal">
+    <div class="btn-row reveal">
       <a class="btn" href="https://wa.me/5541998675814" target="_blank" rel="noopener"><span class="mono">&gt;</span> Quero meu diagnóstico gratuito</a>
       <a class="btn ghost" href="mailto:jhguimadc@gmail.com"><span class="mono">✉</span> Enviar e-mail</a>
     </div>
@@ -507,11 +523,8 @@
 <script>
 (function(){
   try {
-    // Ativa o modo de efeitos APENAS se o JS rodar inteiro sem erros.
-    // Se qualquer coisa falhar abaixo, o catch remove a classe e o site fica 100% visível.
     document.documentElement.classList.add('js');
 
-    // ---------- reveal on scroll ----------
     var revealEls = document.querySelectorAll('.reveal');
     if (revealEls.length) {
       if ('IntersectionObserver' in window) {
@@ -532,7 +545,6 @@
       }
     }
 
-    // ---------- contadores animados ----------
     var counters = document.querySelectorAll('[data-count]');
     if (counters.length && 'IntersectionObserver' in window) {
       var countIO = new IntersectionObserver(function(entries){
@@ -557,7 +569,6 @@
       counters.forEach(function(el){ countIO.observe(el); });
     }
 
-    // ---------- carrosséis ----------
     document.querySelectorAll('[data-carousel]').forEach(function(c){
       var track = c.querySelector('.track');
       if (!track) return;
@@ -604,7 +615,6 @@
       restart();
     });
 
-    // ---------- lightbox ----------
     var lb = document.createElement('div');
     lb.className = 'lightbox';
     lb.setAttribute('role','dialog');
@@ -639,7 +649,6 @@
       });
     });
   } catch(err) {
-    // Qualquer erro: remove o modo de efeitos e deixa tudo visível.
     document.documentElement.classList.remove('js');
   }
 })();
