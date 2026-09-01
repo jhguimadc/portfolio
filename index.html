@@ -301,6 +301,32 @@
   /* ===== Cards: contraste laranja/branco (Como eu trabalho + O que construo) ===== */
 .cards-contrast .card h3{color:var(--spark)}   /* títulos em laranja */
 .cards-contrast .card p{color:var(--white)}    /* texto do corpo em branco */
+/* ===== Checklist comparativo: Pronto x Sob Medida ===== */
+:root{--red:#E5484D;--green:#30A46C}
+.cmp{display:grid;grid-template-columns:1.15fr 1fr 1fr;margin-top:1.2rem;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden;background:var(--ink)}
+.cmp .c-head,.cmp .c-row{display:contents}
+.cmp .c-cell{padding:1rem 1.2rem;font-size:.9rem;line-height:1.45}
+.cmp .c-head .c-cell{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;background:var(--blueprint-2);padding:.95rem 1.2rem}
+.cmp .c-head .c-cell.item{color:var(--mute)}
+.cmp .c-head .c-cell.bad{color:var(--red);border-bottom:2px solid rgba(229,72,77,.5)}
+.cmp .c-head .c-cell.good{color:var(--green);border-bottom:2px solid rgba(48,164,108,.55)}
+.cmp .c-row .c-cell{border-top:1px solid var(--line-soft)}
+.cmp .c-row .c-cell.item{color:#B9CBDD;font-weight:600;font-size:.85rem}
+.cmp .c-row .c-cell.bad{color:#9DB2C7}
+.cmp .c-row .c-cell.good{color:var(--paper)}
+.cmp .c-cell .ic{font-family:'JetBrains Mono',monospace;font-weight:700;margin-right:.45rem}
+.cmp .c-cell.bad .ic{color:var(--red)}
+.cmp .c-cell.good .ic{color:var(--green)}
+.cmp .c-row:hover .c-cell{background:rgba(11,42,74,.4)}
+.cmp-close{margin-top:1.6rem;font-size:1.05rem;color:#B9CBDD;max-width:52ch}
+.cmp-close b{color:var(--spark)}
+@media(max-width:760px){
+  .cmp{grid-template-columns:1fr}
+  .cmp .c-head{display:none}
+  .cmp .c-row{display:grid;grid-template-columns:1fr}
+  .cmp .c-row .c-cell.item{background:var(--blueprint-2);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+  .cmp .c-row .c-cell.bad{border-top:1px dashed var(--line-soft)}
+}  
 </style>
 </head>
 <body>
@@ -334,12 +360,41 @@
   </section>
   <!-- 3. POR QUE SOB MEDIDA (Azul) — comparativo Pronto x Personalizado -->
   <section>
-    <span class="eyebrow reveal">Porque sob medida?</span>
+    <span class="eyebrow reveal">Por que sob medida?</span>
     <h2 class="sec reveal">Pronto x Sob medida: onde está a diferença</h2>
-    <div class="grid-svc">
-      <div class="card pain reveal"><div class="num">SEM O SISTEMA CERTO</div><h3>Processo sem controle</h3><p>ERP limitado e lento, operacional e administrativo desconectados, cada um faz de um jeito — e o gargalo só aparece quando já travou.</p></div>
-      <div class="card solution reveal"><div class="num">COM O SISTEMA SOB MEDIDA</div><h3>Controle de verdade</h3><p>Visão do processo inteiro, procedimentos claros e intuitivos, dados confiáveis de ponta a ponta — e o gargalo reduzido onde quer que ele esteja.</p></div>
-    </div>
+    <div class="cmp reveal">
+  <div class="c-head">
+    <span class="c-cell item">Item de comparação</span>
+    <span class="c-cell bad">✗ Sistema pronto</span>
+    <span class="c-cell good">✓ Sob medida</span>
+  </div>
+  <div class="c-row">
+    <span class="c-cell item">Adaptação ao processo</span>
+    <span class="c-cell bad"><span class="ic">✗</span>Você adapta seu processo ao sistema</span>
+    <span class="c-cell good"><span class="ic">✓</span>O sistema se adapta ao seu processo</span>
+  </div>
+  <div class="c-row">
+    <span class="c-cell item">Integração operacional + administrativo</span>
+    <span class="c-cell bad"><span class="ic">✗</span>Dados espalhados em planilhas paralelas</span>
+    <span class="c-cell good"><span class="ic">✓</span>Tudo integrado num único fluxo</span>
+  </div>
+  <div class="c-row">
+    <span class="c-cell item">Suporte e implementação</span>
+    <span class="c-cell bad"><span class="ic">✗</span>Central de atendimento genérica, ticket na fila</span>
+    <span class="c-cell good"><span class="ic">✓</span>Suporte direto com quem construiu o sistema</span>
+  </div>
+  <div class="c-row">
+    <span class="c-cell item">Propriedade do sistema</span>
+    <span class="c-cell bad"><span class="ic">✗</span>Você nunca é dono, só licencia o uso</span>
+    <span class="c-cell good"><span class="ic">✓</span>Você escolhe: usar por assinatura ou ser dono do código</span>
+  </div>
+  <div class="c-row">
+    <span class="c-cell item">Visibilidade do gargalo</span>
+    <span class="c-cell bad"><span class="ic">✗</span>Só aparece quando já travou</span>
+    <span class="c-cell good"><span class="ic">✓</span>Visível antes de virar problema</span>
+  </div>
+</div>
+<p class="cmp-close reveal">O sistema pronto resolve o problema do fornecedor. <b>O sob medida resolve o seu.</b></p>
   </section>
   <!-- 4. CASE REAL (Azul Escuro) — prova de que funciona -->
   <section class="case">
