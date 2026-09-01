@@ -238,6 +238,13 @@
   .project p{font-size:.9rem;color:#9DB2C7;margin-bottom:.9rem}
   .project .stack{display:flex;flex-wrap:wrap;gap:.4rem}
   .project .stack span{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--mute);border:1px solid var(--line-soft);padding:.2rem .5rem;border-radius:2px}
+  /* ===== Projetos: descrição limitada p/ blocos uniformes ===== */
+  .project .pbody p{
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
   /* carrossel */
   .thumb.carousel{overflow:hidden}
   .carousel .track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
@@ -404,6 +411,7 @@
     </div>
   </section>
   <!-- 8. OUTROS PROJETOS (Azul) — mais do que construí -->
+  <section>
     <span class="eyebrow reveal">Mais do que construí</span>
     <h2 class="sec reveal">Outros sistemas e exemplos:</h2>
     <p class="lead reveal">Cada projeto nasce de um problema real de negócio. Aqui estão outros sistemas que foram desenvolvidos para ganhar controle, clareza e sobretudo velocidade.</p>
@@ -421,7 +429,7 @@
         <div class="pbody">
           <span class="ptag">Gestão · RH</span>
           <h3>Ponto Digital</h3>
-          <p>Sistema de ponto eletrônico que importa registros e fecha pagamentos por período. Calcula horas, valores por hora e por dia, passagens, e sinaliza automaticamente colaboradores com registros incompletos.</p>
+          <p>Sistema de ponto eletrônico que importa registros e fecha pagamentos por período. Calcula horas e valores, gerencia passagens e sinaliza automaticamente colaboradores com pendências.</p>
           <div class="stack"><span>Web</span><span>IA</span><span>Import/Export</span><span>Freelancers</span></div>
         </div>
       </div>
@@ -438,7 +446,7 @@
         <div class="pbody">
           <span class="ptag">Gestão · Financeiro</span>
           <h3>Fechamento de Folha</h3>
-          <p>Apuração de horas extras e pré-conferência antes da contabilidade. Importa AFD, aplica faixas de HE configuráveis, calcula VT, VR, faltas e adicionais, e entrega indicadores por colaborador.</p>
+          <p>Apuração de horas extras e pré-conferência contábil. Importa AFD, aplica regras de HE configuráveis, calcula VT, VR, faltas e adicionais, entregando indicadores por colaborador.</p>
           <div class="stack"><span>Web</span><span>IA</span><span>Import AFD</span><span>Regras configuráveis</span></div>
         </div>
       </div>
@@ -447,7 +455,7 @@
         <div class="pbody">
           <span class="ptag">Automação · Dados</span>
           <h3>Extrator para Expedição</h3>
-          <p>Lê o PDF de pedido/nota fiscal do ERP e gera uma picklist funcional pra operação — em CSV e num PDF de expedição com fonte ampliada e dados sensíveis mascarados automaticamente.</p>
+          <p>Faz leitura de PDFs de pedidos/notas do ERP e gera uma picklist operacional em CSV e PDF. O sistema oferece fonte ampliada e mascara dados sensíveis automaticamente.</p>
           <div class="stack"><span>Web</span><span>IA</span><span>Extração PDF</span><span>CSV</span></div>
         </div>
       </div>
@@ -465,7 +473,7 @@
         <div class="pbody">
           <span class="ptag">Gestão · Comercial</span>
           <h3>CRM de Vendas</h3>
-          <p>Funil de vendas visual em Kanban, com etapas configuráveis, valor e responsável por negócio. Contatos, tarefas com prazos (atrasadas, hoje e próximas), painel de indicadores — em aberto, ganhos e taxa de conversão — e exportação da carteira para planilha.</p>
+          <p>Funil de vendas visual (Kanban) com etapas customizáveis. Inclui gestão de contatos e tarefas, painel de indicadores (conversão e ganhos) e exportação de dados para planilhas.</p>
           <div class="stack"><span>Web</span><span>IA</span><span>Kanban</span><span>Multiusuário</span></div>
         </div>
       </div>
@@ -483,7 +491,7 @@
         <div class="pbody">
           <span class="ptag">Automação · Dados</span>
           <h3>Conversor de Lista Full</h3>
-          <p>Lê o PDF da lista de estoque Full do marketplace (Mercado Livre, Shopee) e devolve uma planilha consolidada de SKU × Total. Aplica um DE-PARA contra a base de produtos (2.800+ SKUs embutidos no app) pra padronizar os códigos, totaliza as unidades e entrega pronto — em segundos, sem digitação manual.</p>
+          <p>Faz leitura de PDFs de estoque (Mercado Livre/Shopee) e gera planilha consolidada de SKU × Total. Aplica DE-PARA com base de 2.800+ SKUs para padronização automática, totalizando unidades em segundos.</p>
           <div class="stack"><span>Web</span><span>IA</span><span>Extração PDF</span><span>DE-PARA</span><span>Excel/CSV</span></div>
         </div>
       </div>
