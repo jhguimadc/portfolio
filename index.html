@@ -82,8 +82,7 @@
   section.light h2.sec{color:var(--ink)}
   section.light .lead{color:#5b6b7d}
   section.light p{color:#5b6b7d}
-  /* cards internos continuam escuros — contraste com o fundo claro */
-  section.light .card h3,
+  /* títulos de why/project em seções claras continuam claros (fundos escuros) */
   section.light .why .w h3,
   section.light .project h3{color:var(--paper)}
   section.light .card,
@@ -292,13 +291,15 @@
 .cta-email:hover{color:var(--paper)}
 .cta-assurance{margin-top:1.4rem;font-size:1rem;color:#B9CBDD}
 .cta-assurance b{color:var(--spark-2);font-weight:600}
-  
+  /* ===== Cards: contraste laranja/branco (Como eu trabalho + O que construo) ===== */
+.cards-contrast .card h3{color:var(--spark)}   /* títulos em laranja */
+.cards-contrast .card p{color:var(--white)}    /* texto do corpo em branco */
 </style>
 </head>
 <body>
 <div class="blueprint-grid"></div>
 <div class="content">
-  <!-- HERO (azul) -->
+  <!-- 1. HERO (Azul) -->
   <section class="hero">
     <div class="dim-line"></div>
     <div class="hero-tag"><span class="eyebrow">Construtor de Sistemas Sob Medida · ERP · PCP · Web</span></div>
@@ -318,40 +319,22 @@
     </div>
     <div class="scroll-hint"><span class="dot"></span> role para ver o trabalho</div>
   </section>
-  <!-- QUEM (branco) -->
-  <section class="light">
-    <span class="eyebrow reveal">Como eu trabalho?</span>
-    <h2 class="sec reveal">Entendo o negócio.<br> Desenho o sistema. Entrego funcionando de verdade.</h2>
-    <p class="lead reveal">Antes de qualquer linha de código, entendo como sua operação realmente funciona. Mapeio o gargalo, desenho a arquitetura certa e uso IA como alavanca — entregando em semanas o que levaria meses.</p>
-    <div class="grid-svc">
-      <div class="card reveal"><div class="num">// 01</div><h3>Entendo o negócio</h3><p>Antes de qualquer linha de código, entendo a operação, o gargalo e o que realmente importa resolver e cuidar.</p></div>
-      <div class="card reveal"><div class="num">// 02</div><h3>Desenho o sistema</h3><p>Modelo de dados, regras e arquitetura pensados pra durar e crescer junto com o negócio.</p></div>
-      <div class="card reveal"><div class="num">// 03</div><h3>Entrega rápida</h3><p>A IA não substitui o pensamento, ela multiplica a velocidade.</p></div>
-      <div class="card reveal"><div class="num">// 04</div><h3>Implantação de verdade</h3><p> Treinamento para o time, suporte e acompanhamento personalizado conforme a necessidade de cada negócio.</p></div>
-    </div>
-  </section>
-  <!-- DOR / GARGALO (azul) -->
-  <section id="dor">
-    <span class="eyebrow reveal">Porque sob medida?</span>
+  <!-- 2. DOR / GARGALO (Branco) — identificação com o problema -->
+  <section id="dor" class="light">
+    <span class="eyebrow reveal">A dor</span>
     <h2 class="sec reveal">O gargalo nunca fica no mesmo lugar</h2>
     <p class="lead reveal">Hoje trava na fila de produção, amanhã no apontamento, depois na estrutura de produtos. Sistemas prontos são estáticos — não acompanham esse movimento. Com o sistema sob medida você ganha visibilidade e controle para reduzir o gargalo, onde quer que ele esteja. Implementação de verdade.</p>
+  </section>
+  <!-- 3. POR QUE SOB MEDIDA (Azul) — comparativo Pronto x Personalizado -->
+  <section>
+    <span class="eyebrow reveal">Porque sob medida?</span>
+    <h2 class="sec reveal">Pronto x Sob medida: onde está a diferença</h2>
     <div class="grid-svc">
       <div class="card pain reveal"><div class="num">SEM O SISTEMA CERTO</div><h3>Processo sem controle</h3><p>ERP limitado e lento, operacional e administrativo desconectados, cada um faz de um jeito — e o gargalo só aparece quando já travou.</p></div>
       <div class="card solution reveal"><div class="num">COM O SISTEMA SOB MEDIDA</div><h3>Controle de verdade</h3><p>Visão do processo inteiro, procedimentos claros e intuitivos, dados confiáveis de ponta a ponta — e o gargalo reduzido onde quer que ele esteja.</p></div>
     </div>
   </section>
-  <!-- O QUE CONSTRUO (branco) -->
-  <section class="light">
-    <span class="eyebrow reveal">O que eu construo?</span>
-    <h2 class="sec reveal">Sistemas sob medida pra sua operação</h2>
-    <div class="grid-svc">
-      <div class="card reveal"><div class="num">ERP / PCP</div><h3>Sistemas de gestão</h3><p>Produção, estoque, pedidos, planejamento — no lugar de planilhas que travam.</p></div>
-      <div class="card reveal"><div class="num">DATA</div><h3>Dashboards &amp; previsão</h3><p>Indicadores, relatórios e previsão de demanda que ajudam a decidir com dados.</p></div>
-      <div class="card reveal"><div class="num">WEB</div><h3>Aplicações sob medida</h3><p>Ferramentas internas, calculadoras e automações feitas do seu jeito.</p></div>
-      <div class="card reveal"><div class="num">FLOW</div><h3>Digitalização de processos</h3><p>Aquele processo que vive no papel ou na cabeça de alguém, virando sistema.</p></div>
-    </div>
-  </section>
-  <!-- CASE (azul escuro) -->
+  <!-- 4. CASE REAL (Azul Escuro) — prova de que funciona -->
   <section class="case">
     <div class="case-head reveal">
       <span class="tagpill">Case real</span>
@@ -375,7 +358,7 @@
       <div class="stat reveal"><div class="big">1</div><div class="lbl">sistema no lugar da planilha</div><div class="desc">Uma ferramenta que cresce com a operação.</div></div>
     </div>
   </section>
-  <!-- GALERIA (branco) -->
+  <!-- 5. GALERIA (Branco) — por dentro do sistema -->
   <section class="light">
     <span class="eyebrow reveal">Por dentro do sistema</span>
     <h2 class="sec reveal">Sistemas de PCP/ERP</h2>
@@ -397,8 +380,30 @@
       <div class="dots"></div>
     </div>
   </section>
-  <!-- OUTROS PROJETOS (branco) -->
-  <section class="light">
+  <!-- 6. COMO EU TRABALHO (Azul) — o método -->
+  <section class="cards-contrast">
+    <span class="eyebrow reveal">Como eu trabalho?</span>
+    <h2 class="sec reveal">Entendo o negócio.<br> Desenho o sistema. Entrego funcionando de verdade.</h2>
+    <p class="lead reveal">Antes de qualquer linha de código, entendo como sua operação realmente funciona. Mapeio o gargalo, desenho a arquitetura certa e uso IA como alavanca — entregando em semanas o que levaria meses.</p>
+    <div class="grid-svc">
+      <div class="card reveal"><div class="num">// 01</div><h3>Entendo o negócio</h3><p>Imersão completa na sua operação para dar atenção no que realmente importa em resolver e cuidar.</p></div>
+      <div class="card reveal"><div class="num">// 02</div><h3>Desenho o sistema</h3><p>Modelo de dados, regras e arquitetura pensados pra durar e crescer junto com o negócio.</p></div>
+      <div class="card reveal"><div class="num">// 03</div><h3>Entrega rápida</h3><p>A IA não substitui o pensamento, ela multiplica a velocidade.</p></div>
+      <div class="card reveal"><div class="num">// 04</div><h3>Implantação de verdade</h3><p> Treinamento para o time, suporte e acompanhamento personalizado conforme a necessidade de cada negócio.</p></div>
+    </div>
+  </section>
+  <!-- 7. O QUE CONSTRUO (Branco) — o que entrego -->
+  <section class="light cards-contrast">
+    <span class="eyebrow reveal">O que eu construo?</span>
+    <h2 class="sec reveal">Sistemas sob medida pra sua operação</h2>
+    <div class="grid-svc">
+      <div class="card reveal"><div class="num">ERP / PCP</div><h3>Sistemas de gestão</h3><p>Produção, estoque, pedidos, planejamento — no lugar de planilhas que travam.</p></div>
+      <div class="card reveal"><div class="num">DATA</div><h3>Dashboards &amp; previsão</h3><p>Indicadores, relatórios e previsão de demanda que ajudam a decidir com dados.</p></div>
+      <div class="card reveal"><div class="num">WEB</div><h3>Aplicações sob medida</h3><p>Ferramentas internas, calculadoras e automações feitas do seu jeito.</p></div>
+      <div class="card reveal"><div class="num">FLOW</div><h3>Digitalização de processos</h3><p>Aquele processo que vive no papel ou na cabeça de alguém, virando sistema.</p></div>
+    </div>
+  </section>
+  <!-- 8. OUTROS PROJETOS (Azul) — mais do que construí -->
     <span class="eyebrow reveal">Mais do que construí</span>
     <h2 class="sec reveal">Outros sistemas e exemplos:</h2>
     <p class="lead reveal">Cada projeto nasce de um problema real de negócio. Aqui estão outros sistemas que foram desenvolvidos para ganhar controle, clareza e sobretudo velocidade.</p>
@@ -484,8 +489,8 @@
       </div>
     </div>
   </section>
-  <!-- POR QUE COMIGO (azul) -->
-  <section>
+  <!-- 9. POR QUE COMIGO (Branco) — quebra de objeções -->
+  <section class="light">
     <span class="eyebrow reveal">Por que trabalhar comigo?</span>
     <h2 class="sec reveal">O que você ganha?</h2>
     <div class="why">
@@ -495,12 +500,11 @@
       <div class="w reveal"><span class="chk">[✓]</span><h3>Suporte direto com quem construiu</h3><p>Sem central de atendimento: você fala comigo, que entendo o sistema de ponta a ponta.</p></div>
     </div>
   </section>
-  <!-- CTA (azul) -->
+  <!-- 10. CTA final (Azul) -->
 <section class="cta">
   <span class="eyebrow reveal" style="justify-content:center">O que vamos construir?</span>
   <h2 class="reveal">O gargalo muda de lugar.<br>Seu controle precisa <span class="accent">acompanhar</span>.</h2>
   <p class="reveal">Me conte como sua operação funciona. Encontramos aonde trava mais e proponho o sistema certo. Se fizer sentido, seguimos.</p>
-
   <!-- CTA ÚNICO: WhatsApp é a única ação principal -->
   <div class="btn-row reveal">
     <a class="btn-wa" href="https://wa.me/5541998675814" target="_blank" rel="noopener">
@@ -510,16 +514,12 @@
       Falar sobre minha operação
     </a>
   </div>
-
   <!-- E-mail virou link secundário discreto (não compete com o botão) -->
   <div class="reveal">
     <a class="cta-email" href="mailto:jhguimadc@gmail.com">Prefere e-mail? Escreva por aqui</a>
   </div>
-
   <!-- Micro-copy de confiança em destaque -->
-  
   <p class="btn-note reveal">WhatsApp abre direto — respondo no mesmo dia.</p>
-
   <div class="signature reveal">
     <b>João Henrique</b> · Construtor de sistemas sob medida
   </div>
@@ -547,7 +547,6 @@
 (function(){
   try {
     document.documentElement.classList.add('js');
-
     var revealEls = document.querySelectorAll('.reveal');
     if (revealEls.length) {
       if ('IntersectionObserver' in window) {
@@ -567,7 +566,6 @@
         revealEls.forEach(function(el){ el.classList.add('in'); });
       }
     }
-
     var counters = document.querySelectorAll('[data-count]');
     if (counters.length && 'IntersectionObserver' in window) {
       var countIO = new IntersectionObserver(function(entries){
@@ -591,7 +589,6 @@
       }, {threshold:.6});
       counters.forEach(function(el){ countIO.observe(el); });
     }
-
     document.querySelectorAll('[data-carousel]').forEach(function(c){
       var track = c.querySelector('.track');
       if (!track) return;
@@ -637,7 +634,6 @@
       }, {passive:true});
       restart();
     });
-
     var lb = document.createElement('div');
     lb.className = 'lightbox';
     lb.setAttribute('role','dialog');
