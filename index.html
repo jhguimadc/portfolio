@@ -728,5 +728,13 @@
   }
 })();
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
+      var base = a.href.split('?')[0];
+      a.href = base + '?text=' + encodeURIComponent('Quero falar sobre minha operação');
+    });
+  });
+</script>  
 </body>
 </html>
