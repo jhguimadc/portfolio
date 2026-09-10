@@ -37,7 +37,122 @@
 <body>
 <title>Sistemas Sob Medida</title>
 
+<div id="progress-bar" aria-hidden="true"></div>
+
+<nav id="side-nav" aria-label="Navegacao por secoes"></nav>
+
+<button id="nav-fab" aria-label="Abrir menu de secoes" aria-expanded="false">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <line x1="4" y1="6" x2="20" y2="6"></line>
+    <line x1="4" y1="12" x2="20" y2="12"></line>
+    <line x1="4" y1="18" x2="20" y2="18"></line>
+  </svg>
+</button>
+
+<div id="nav-sheet">
+  <div id="nav-sheet-handle"></div>
+  <ul id="nav-sheet-list"></ul>
+</div>  
+  
 <style>
+
+:root {
+  --nav-accent: #e07a3f;
+  --nav-bg: #0a1628;
+  --nav-text: rgba(255,255,255,0.55);
+  --nav-text-active: #ffffff;
+}
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--nav-accent);
+  z-index: 60;
+  transition: width 0.1s linear;
+  display: none;
+}
+
+#side-nav {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+  width: 160px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+#side-nav a {
+  display: block;
+  padding: 7px 0 7px 14px;
+  border-left: 2px solid rgba(255,255,255,0.12);
+  color: var(--nav-text);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+#side-nav a:hover { color: var(--nav-text-active); }
+#side-nav a.active {
+  color: var(--nav-text-active);
+  border-left-color: var(--nav-accent);
+  font-weight: 500;
+}
+
+#nav-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--nav-accent);
+  color: var(--nav-bg);
+  border: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  cursor: pointer;
+}
+
+#nav-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--nav-bg);
+  border-radius: 16px 16px 0 0;
+  padding: 16px 20px calc(20px + env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+  z-index: 59;
+}
+#nav-sheet.open { transform: translateY(0); }
+#nav-sheet-handle {
+  width: 36px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+#nav-sheet-list { list-style: none; margin: 0; padding: 0; }
+#nav-sheet-list a {
+  display: block;
+  padding: 13px 4px;
+  color: var(--nav-text-active);
+  text-decoration: none;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#nav-sheet-list a.active { color: var(--nav-accent); }
+
+@media (min-width: 1024px) {
+  #progress-bar, #nav-fab, #nav-sheet { display: none !important; }
+  #side-nav { display: flex; }
+}
+    
 :root{
   --bg:#0B2A4A;
   --panel:#0A1929;
@@ -399,7 +514,6 @@ figure.shot .cd{font-size:14px;color:var(--ink-2);line-height:1.45;margin:0}
 
 /* ---------- cadeia ---------- */
 
-
 .cadeia{
   border:1px solid var(--line);
   border-radius:8px;
@@ -700,7 +814,7 @@ figure.shot .cd{font-size:14px;color:var(--ink-2);line-height:1.45;margin:0}
 .degrau .dg.am{color:var(--amber)}
 
 /* ---------- metodo ---------- */
-
+  
 .passos{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
@@ -748,7 +862,7 @@ figure.shot .cd{font-size:14px;color:var(--ink-2);line-height:1.45;margin:0}
 }
 
 /* ---------- case ---------- */
-
+  
 .case{
   border:1px solid var(--line);
   border-radius:8px;
@@ -907,7 +1021,7 @@ figure.shot .cd{font-size:14px;color:var(--ink-2);line-height:1.45;margin:0}
 .porte p{color:var(--ink);max-width:70ch;font-size:clamp(16px,1.7vw,18px)}
 
 /* ---------- cta ---------- */
-
+  
 .cta{
   position:relative;
   overflow:hidden;
@@ -1053,7 +1167,7 @@ footer .f{
   </div>
 </header>
 
-<section class="wrap">
+<section class="wrap" id="sintomas">
   <div class="sec-head">
     <p class="eyebrow">// Sintomas</p>
     <h2>Você não tem falta de relatório. Tem excesso de digitação.</h2>
@@ -1235,7 +1349,7 @@ footer .f{
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="frentes">
   <div class="sec-head">
     <p class="eyebrow">// Frentes</p>
     <h2>Cinco frentes. Você começa por uma.</h2>
@@ -1290,7 +1404,7 @@ footer .f{
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="comparacao">
   <div class="sec-head">
     <p class="eyebrow">// Pronto x sob medida</p>
     <h2>Onde está a diferença que pesa no dia a dia.</h2>
@@ -1390,7 +1504,7 @@ footer .f{
   <p class="sintomas-note">Dá para começar no degrau 01 e nunca precisar do 03. A cadeia funciona igual — o que muda é a velocidade com que o dado chega e o esforço de quem opera.</p>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="metodo">
   <div class="sec-head">
     <p class="eyebrow">// Método</p>
     <h2>A gente não chega com a solução pronta.</h2>
@@ -1432,7 +1546,7 @@ footer .f{
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="case">
   <div class="sec-head">
     <p class="eyebrow">// Case</p>
     <h2>Da planilha à cadeia ligada, numa fábrica de 20 pessoas.</h2>
@@ -1613,7 +1727,7 @@ footer .f{
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="contato">
   <div class="wrap">
     <p class="eyebrow">// Próximo passo</p>
     <h2>Comece pela conversa. Sem compromisso e sem proposta na mesa.</h2>
@@ -1634,6 +1748,90 @@ footer .f{
     <span class="f">Curitiba/PR · Indústria e comércio</span>
   </div>
 </footer>
+
+<script>
+(function () {
+  var SECTIONS = [
+    { id: 'sintomas',   label: 'Sintomas' },
+    { id: 'frentes',    label: 'Frentes' },
+    { id: 'comparacao', label: 'Pronto x sob medida' },
+    { id: 'metodo',     label: 'Metodo' },
+    { id: 'case',       label: 'Case' },
+    { id: 'contato',    label: 'Contato' }
+  ];
+
+  var sideNav = document.getElementById('side-nav');
+  var sheetList = document.getElementById('nav-sheet-list');
+  var progressBar = document.getElementById('progress-bar');
+  var fab = document.getElementById('nav-fab');
+  var sheet = document.getElementById('nav-sheet');
+
+  var validSections = SECTIONS.filter(function (s) {
+    return document.getElementById(s.id) !== null;
+  });
+
+  validSections.forEach(function (s) {
+    var linkDesktop = document.createElement('a');
+    linkDesktop.href = '#' + s.id;
+    linkDesktop.textContent = s.label;
+    linkDesktop.dataset.target = s.id;
+    sideNav.appendChild(linkDesktop);
+
+    var li = document.createElement('li');
+    var linkMobile = document.createElement('a');
+    linkMobile.href = '#' + s.id;
+    linkMobile.textContent = s.label;
+    linkMobile.dataset.target = s.id;
+    li.appendChild(linkMobile);
+    sheetList.appendChild(li);
+  });
+
+  document.querySelectorAll('#side-nav a, #nav-sheet-list a').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.getElementById(link.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeSheet();
+    });
+  });
+
+  function openSheet() {
+    sheet.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+  }
+  function closeSheet() {
+    sheet.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+  }
+  fab.addEventListener('click', function () {
+    if (sheet.classList.contains('open')) { closeSheet(); } else { openSheet(); }
+  });
+
+  function updateProgress() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = entry.target.id;
+      document.querySelectorAll('#side-nav a, #nav-sheet-list a').forEach(function (a) {
+        a.classList.toggle('active', a.dataset.target === id);
+      });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  validSections.forEach(function (s) {
+    var el = document.getElementById(s.id);
+    if (el) { observer.observe(el); }
+  });
+})();
+</script>  
 
 </body>
 </html>
