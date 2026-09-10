@@ -72,7 +72,6 @@
   background: var(--nav-accent);
   z-index: 60;
   transition: width 0.1s linear;
-  display: none;
 }
 
 #side-nav {
@@ -112,7 +111,6 @@
   background: var(--nav-accent);
   color: var(--nav-bg);
   border: none;
-  display: none;
   align-items: center;
   justify-content: center;
   z-index: 60;
@@ -149,6 +147,11 @@
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 #nav-sheet-list a.active { color: var(--nav-accent); }
+
+@media (max-width: 1023px) {
+  #progress-bar { display: block; }
+  #nav-fab { display: flex; }
+}  
 
 @media (min-width: 1024px) {
   #progress-bar, #nav-fab, #nav-sheet { display: none !important; }
